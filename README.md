@@ -1,6 +1,4 @@
 # chatwork_mention_task 
-[![CircleCI](https://circleci.com/gh/sue445/chatwork_mention_task.svg?style=svg)](https://circleci.com/gh/sue445/chatwork_mention_task)
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
