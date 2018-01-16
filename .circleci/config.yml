@@ -1,0 +1,89 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+
+default: &default
+  docker:
+    - image: circleci/ruby:2.5.0-node
+      environment:
+        PGHOST: 127.0.0.1
+        PGUSER: ubuntu
+        RAILS_ENV: test
+    - image: circleci/postgres:10-alpine
+      environment:
+        POSTGRES_USER: ubuntu
+        POSTGRES_DB: chatwork_mention_task_test
+  working_directory: ~/app
+
+jobs:
+  checkout_code:
+    <<: *default
+
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/app
+
+  bundle_dependencies:
+    <<: *default
+
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+            - v1-bundle-master
+      - run: ./.circleci/bundle_install.sh
+      - save_cache:
+          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+          paths:
+            - ~/app/vendor/bundle
+
+  rspec:
+    <<: *default
+
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+
+      - run: ./.circleci/bundle_install.sh
+
+      # Database setup
+      - run: ./bin/rails db:create
+      - run: ./bin/rails db:schema:load
+
+      - run: bundle exec rspec
+
+  rubocop:
+    <<: *default
+
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+      - run: ./.circleci/bundle_install.sh
+      - run: bundle exec rubocop
+
+workflows:
+  version: 2
+
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - rspec:
+          requires:
+            - bundle_dependencies
+      - rubocop:
+          requires:
+            - bundle_dependencies
