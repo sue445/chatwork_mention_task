@@ -38,11 +38,7 @@ jobs:
           keys:
             - v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
             - v1-bundle-master
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-            bundle clean
+      - run: ./.circleci/bundle_install.sh
       - save_cache:
           key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
           paths:
@@ -57,10 +53,7 @@ jobs:
       - restore_cache:
           key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
 
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: ./.circleci/bundle_install.sh
 
       # Database setup
       - run: ./bin/rails db:create
@@ -76,10 +69,7 @@ jobs:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: ./.circleci/bundle_install.sh
       - run: bundle exec rubocop
 
 workflows:
