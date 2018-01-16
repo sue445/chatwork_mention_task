@@ -17,3 +17,7 @@ group :development do
   gem "onkcop", require: false
   gem "pry-byebug", group: :test
 end
+
+group :test do
+  gem "rspec-rails", group: :development
+end
