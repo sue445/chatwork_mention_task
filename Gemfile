@@ -14,6 +14,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development do
+  gem "onkcop", require: false
   gem 'pry-byebug', group: :test
 end
-
