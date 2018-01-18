@@ -10,7 +10,7 @@ threads threads_count, threads_count
 _rails_env = ENV.fetch("RAILS_ENV") { "development" }
 _port = ENV.fetch("PORT") { 3000 }
 
-if _rails_env == "development" && File.exists?("#{__dir__}/server.key")
+if _rails_env == "development" && File.exist?("#{__dir__}/server.key")
   server_key = "#{__dir__}/server.key"
   server_crt = "#{__dir__}/server.crt"
 
