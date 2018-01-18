@@ -17,7 +17,7 @@ if _rails_env == "development" && File.exist?("#{__dir__}/server.key")
   ssl_bind "0.0.0.0", "9292", {
     key:         server_key,
     cert:        server_crt,
-    verify_mode: "none"
+    verify_mode: "none",
   }
 else
   port _port
