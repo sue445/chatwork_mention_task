@@ -6,7 +6,9 @@ ruby "2.5.0"
 gem "rails", "~> 5.2.0.beta2"
 
 gem "bootsnap", require: false
+gem "bootstrap", "~> 4.0.0.beta3"
 gem "jbuilder"
+gem "jquery-rails"
 gem "pg", "~> 0.18"
 gem "puma"
 gem "sass-rails"
