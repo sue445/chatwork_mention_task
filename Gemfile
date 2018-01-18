@@ -9,6 +9,7 @@ gem "bootsnap", require: false
 gem "bootstrap", "~> 4.0.0.beta3"
 gem "jbuilder"
 gem "jquery-rails"
+gem "newrelic_rpm"
 gem "pg", "~> 0.18"
 gem "puma"
 gem "rollbar"
