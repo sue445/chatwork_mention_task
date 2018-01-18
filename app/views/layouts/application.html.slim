@@ -1,0 +1,22 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" /
+    meta content="" name="description" /
+    meta content="" name="author" /
+    title = content_for?(:title) ? "#{yield :title} | ChatworkMentionTask" : "ChatworkMentionTask"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+      a.navbar-brand href="/" ChatworkMentionTask
+
+      button.navbar-toggler aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button"
+        span.navbar-toggler-icon
+
+    .container-fluid
+      = yield
