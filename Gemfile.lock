@@ -90,6 +90,7 @@ GEM
     minitest (5.11.1)
     msgpack (1.2.2)
     multi_json (1.13.1)
+    newrelic_rpm (4.7.1.340)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -222,6 +223,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   listen
+  newrelic_rpm
   onkcop
   pg (~> 0.18)
   pry-byebug
