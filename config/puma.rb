@@ -7,8 +7,8 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 threads threads_count, threads_count
 
-_rails_env = ENV.fetch("RAILS_ENV") {"development"}
-_port = ENV.fetch("PORT") {3000}
+_rails_env = ENV.fetch("RAILS_ENV") { "development" }
+_port = ENV.fetch("PORT") { 3000 }
 
 if _rails_env == "development" && File.exists?("#{__dir__}/server.key")
   server_key = "#{__dir__}/server.key"
