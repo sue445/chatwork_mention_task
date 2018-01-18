@@ -17,6 +17,7 @@ gem "turbolinks"
 gem "uglifier"
 
 group :development do
+  gem "foreman", require: false
   gem "listen"
   gem "onkcop", require: false
   gem "pry-byebug", group: :test
