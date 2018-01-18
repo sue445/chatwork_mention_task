@@ -24,3 +24,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+config/server.key
+config/server.csr
+config/server.crt
