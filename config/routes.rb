@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'auth/callback'
   resources :home, only: [:index]
 
   root to: "home#index"
