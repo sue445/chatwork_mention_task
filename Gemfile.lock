@@ -47,9 +47,9 @@ GEM
       execjs
     bootsnap (1.1.8)
       msgpack (~> 1.0)
-    bootstrap (4.0.0.beta3)
+    bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.3, < 2)
+      popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
     builder (3.2.3)
     byebug (9.1.0)
@@ -240,7 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap (~> 4.0.0.beta3)
+  bootstrap
   dotenv-rails
   foreman
   jbuilder
