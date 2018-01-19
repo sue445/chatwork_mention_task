@@ -1,12 +1,13 @@
-require 'rails_helper'
-
 RSpec.describe AuthController, type: :controller do
-
   describe "GET #callback" do
-    it "returns http success" do
-      get :callback
-      expect(response).to have_http_status(:success)
-    end
-  end
+    subject { get :callback, params: params }
 
+    let(:params) do
+      {
+        provider: "chatwork",
+      }
+    end
+
+    it { should have_http_status(302) }
+  end
 end
