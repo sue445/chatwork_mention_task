@@ -39,7 +39,12 @@ chdir APP_ROOT do
   server_key = "#{__dir__}/../config/server.key"
   server_csr = "#{__dir__}/../config/server.csr"
   server_crt = "#{__dir__}/../config/server.crt"
-  system! "openssl genrsa 2048 > #{server_key}"
-  system! "openssl req -new -key #{server_key} -subj '/C=US/ST=xx/L=xxx/O=xx/OU=xx' > #{server_csr}"
-  system! "openssl x509 -days 3650 -req -signkey #{server_key} < #{server_csr} > #{server_crt}"
+
+  unless File.exist?(server_key)
+    system! "openssl genrsa 2048 > #{server_key}"
+    system! "openssl req -new -key #{server_key} -subj '/C=US/ST=xx/L=xxx/O=xx/OU=xx' > #{server_csr}"
+    system! "openssl x509 -days 3650 -req -signkey #{server_key} < #{server_csr} > #{server_crt}"
+  end
+
+  cp ".env.example", ".env" unless File.exist?(".env")
 end

@@ -28,3 +28,4 @@
 config/server.key
 config/server.csr
 config/server.crt
+.env

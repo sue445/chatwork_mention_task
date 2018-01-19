@@ -6,10 +6,12 @@ ruby "2.5.0"
 gem "rails", "~> 5.2.0.beta2"
 
 gem "bootsnap", require: false
-gem "bootstrap", "~> 4.0.0.beta3"
+gem "bootstrap"
+gem "font-awesome-rails"
 gem "jbuilder"
 gem "jquery-rails"
 gem "newrelic_rpm"
+gem "omniauth-chatwork"
 gem "pg", "~> 0.18"
 gem "puma"
 gem "rollbar"
@@ -19,6 +21,7 @@ gem "turbolinks"
 gem "uglifier"
 
 group :development do
+  gem "dotenv-rails"
   gem "foreman", require: false
   gem "listen"
   gem "onkcop", require: false
