@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :auth, only: [] do
     collection do
+      get :login, to: redirect("/auth/chatwork")
       get ":provider/callback", to: "auth#callback", constraints: { provider: /chatwork/ }
     end
   end
