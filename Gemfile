@@ -10,6 +10,7 @@ gem "bootstrap", "~> 4.0.0.beta3"
 gem "jbuilder"
 gem "jquery-rails"
 gem "newrelic_rpm"
+gem "omniauth-chatwork"
 gem "pg", "~> 0.18"
 gem "puma"
 gem "rollbar"
@@ -19,6 +20,7 @@ gem "turbolinks"
 gem "uglifier"
 
 group :development do
+  gem "dotenv-rails"
   gem "foreman", require: false
   gem "listen"
   gem "onkcop", require: false
