@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'my/index'
   resources :auth, only: [] do
     collection do
       get ":provider/callback", to: "auth#callback", constraints: { provider: /chatwork/ }
