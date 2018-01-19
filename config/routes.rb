@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'auth/callback'
+  resources :auth, only: [] do
+    collection do
+      get ":provider/callback", to: "auth#callback", constraints: { provider: /chatwork/ }
+    end
+  end
+
   resources :home, only: [:index]
 
   root to: "home#index"
