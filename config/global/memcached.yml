@@ -5,6 +5,7 @@ default:
     namespace: "chatwork_mention_task"
     compress: true
     expires_in: <%= 30.minutes %>
+    pool_size: 5
   session:
     expire_after: <%= 30.minutes %>
 

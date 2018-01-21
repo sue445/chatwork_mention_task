@@ -7,6 +7,7 @@ gem "rails", "~> 5.2.0.beta2"
 
 gem "bootsnap", require: false
 gem "bootstrap"
+gem "connection_pool"
 gem "dalli"
 gem "font-awesome-rails"
 gem "global"
