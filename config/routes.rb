@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :auth, only: [] do
     collection do
-      get :signin, to: redirect("/auth/chatwork")
+      get :sign_in, to: redirect("/auth/chatwork")
       get "chatwork/callback", to: "auth#callback"
     end
   end
