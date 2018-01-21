@@ -12,11 +12,27 @@ html lang="en"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
 
   body
-    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+    nav.navbar.navbar-expand-md.navbar-dark.bg-primary.fixed-top
       a.navbar-brand href="/" ChatworkMentionTask
 
-      button.navbar-toggler aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button"
+      button.navbar-toggler aria-expanded="false" aria-label=("Toggle navigation") aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
         span.navbar-toggler-icon
+
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+
+        - if signed_in?
+          ul.my-2.my-lg-0
+            li.navbar-nav.mr-auto.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                = image_tag current_user.avatar_image_url, size: "32x32", class: "rounded mx-auto"
+                = current_user.name
+              .dropdown-menu aria-labelledby="navbarDropdown"
+                a.dropdown-item href=my_index_path
+                  = fa_icon "cog", text: "Settings"
+                .dropdown-divider
+                a.dropdown-item href=sign_out_auth_index_path
+                  = fa_icon "sign-out", text: "Sign out"
 
     .container-fluid
       = yield
