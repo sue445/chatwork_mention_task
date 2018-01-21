@@ -5,7 +5,10 @@ dl
   dd = current_user.account_id
 
   dt Room to notify
-  dd = current_user.room_id
+  dd = current_user.room_name
 
   dt Expires at for refresh token
   dd = current_user.refresh_token_expires_at
+
+a.btn.btn-primary role="button" href=edit_my_index_path
+  = fa_icon "cog", text: "Edit"
