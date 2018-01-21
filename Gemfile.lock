@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/bootstrap-ruby/rails-bootstrap-forms.git
+  revision: 6e0028aa6ec46ac240c7789793b09cd1cbb119bb
+  branch: master
+  specs:
+    bootstrap_form (4.0.0.dev)
+      rails (>= 5.0)
+
+GIT
   remote: https://github.com/ctran/annotate_models.git
   revision: e3e0bbe9fdcc23db49862cb1f9ce239e765e63b1
   branch: develop
@@ -274,6 +282,7 @@ DEPENDENCIES
   annotate!
   bootsnap
   bootstrap
+  bootstrap_form!
   connection_pool
   dalli
   dotenv-rails
