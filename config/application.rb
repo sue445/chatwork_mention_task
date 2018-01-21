@@ -28,5 +28,12 @@ module ChatworkMentionTask
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    Global.configure do |config|
+      config.environment = Rails.env.to_s
+      config.config_directory = Rails.root.join("config/global").to_s
+    end
+
+    config.cache_store = :mem_cache_store, Global.memcached.servers, Global.memcached.options.to_hash.symbolize_keys
   end
 end
