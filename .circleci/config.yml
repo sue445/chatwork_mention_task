@@ -15,6 +15,7 @@ default: &default
       environment:
         POSTGRES_USER: ubuntu
         POSTGRES_DB: chatwork_mention_task_test
+    - image: memcached:1.5-alpine
   working_directory: ~/app
 
 jobs:
