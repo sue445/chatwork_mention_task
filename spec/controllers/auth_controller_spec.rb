@@ -8,6 +8,6 @@ RSpec.describe AuthController, type: :controller do
 
     let(:user) { create(:user) }
 
-    it { should redirect_to(my_index_path) }
+    it { should redirect_to my_index_path }
   end
 end
