@@ -16,14 +16,14 @@ RSpec.describe AuthController, type: :controller do
           description: "I am cure engineer!",
           image: "https://appdata.chatwork.com/avatar/ico_default_blue.png",
           urls: {
-            profile: "http://github.com/sue445"
-          }
+            profile: "http://github.com/sue445",
+          },
         },
         credentials: {
           token: "access_token",
           refresh_token: "refresh_token",
           expires_at: 1_510_504_991,
-          expires: true
+          expires: true,
         },
         extra: {
           raw_info: {
@@ -45,9 +45,9 @@ RSpec.describe AuthController, type: :controller do
             facebook: "",
             twitter: "",
             avatar_image_url: "https://appdata.chatwork.com/avatar/ico_default_blue.png",
-            login_mail: "sue445@example.com"
-          }
-        }
+            login_mail: "sue445@example.com",
+          },
+        },
       }
     end
 
