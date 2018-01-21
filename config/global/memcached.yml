@@ -5,6 +5,8 @@ default:
     namespace: "chatwork_mention_task"
     compress: true
     expires_in: <%= 30.minutes %>
+  session:
+    expire_after: <%= 30.minutes %>
 
 production:
   servers: <%= ENV["MEMCACHEDCLOUD_SERVERS"]&.split(",") %>
@@ -12,3 +14,5 @@ production:
     expires_in: <%= 7.day %>
     username: <%= ENV["MEMCACHEDCLOUD_USERNAME"] %>
     password: <%= ENV["MEMCACHEDCLOUD_PASSWORD"] %>
+  session:
+    expire_after: <%= 7.day %>
