@@ -9,7 +9,7 @@ RSpec.describe AuthController, type: :controller do
     let(:auth_hash) do
       {
         provider: "chatwork",
-        uid: 1111111,
+        uid: 1_111_111,
         info: {
           name: "sue445",
           email: "sue445@example.com",
@@ -22,16 +22,16 @@ RSpec.describe AuthController, type: :controller do
         credentials: {
           token: "access_token",
           refresh_token: "refresh_token",
-          expires_at: 1510504991,
+          expires_at: 1_510_504_991,
           expires: true
         },
         extra: {
           raw_info: {
-            account_id: 1111111,
-            room_id: 2222222,
+            account_id: 1_111_111,
+            room_id: 2_222_222,
             name: "sue445",
             chatwork_id: "",
-            organization_id: 1111111,
+            organization_id: 1_111_111,
             organization_name: "",
             department: "",
             title: "",
@@ -61,13 +61,13 @@ RSpec.describe AuthController, type: :controller do
         User.last
       end
 
-      its(:account_id)               { should eq 1111111 }
-      its(:room_id)                  { should eq 2222222 }
+      its(:account_id)               { should eq 1_111_111 }
+      its(:room_id)                  { should eq 2_222_222 }
       its(:name)                     { should eq "sue445" }
       its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
       its(:access_token)             { should eq "access_token" }
       its(:refresh_token)            { should eq "refresh_token" }
-      its(:access_token_expires_at)  { should match_unixtime(1510504991.seconds.from_now) }
+      its(:access_token_expires_at)  { should match_unixtime(1_510_504_991.seconds.from_now) }
       its(:refresh_token_expires_at) { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
     end
   end
