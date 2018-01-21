@@ -1,13 +1,13 @@
 RSpec.describe AuthController, type: :controller do
-  describe "GET #callback" do
-    subject { get :callback, params: params }
+  describe "GET #callback", :time_stop do
+    subject { get :callback }
 
-    let(:params) do
-      {
-        provider: "chatwork",
-      }
+    before do
+      allow(User).to receive(:register) { user }
     end
 
-    it { should have_http_status(302) }
+    let(:user) { create(:user) }
+
+    it { should redirect_to(my_index_path) }
   end
 end
