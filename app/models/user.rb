@@ -24,6 +24,8 @@
 #     * **`account_id`**
 #
 
+require "chatwork/chatwork_error"
+
 class User < ApplicationRecord
   # c.f. http://download.chatwork.com/ChatWork_API_Documentation.pdf
   REFRESH_TOKEN_EXPIRES_IN = 14.days
@@ -45,20 +47,49 @@ class User < ApplicationRecord
   end
 
   def rooms
-    set_token
-    ChatWork::Room.get.select { |room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
+    all_rooms = with_retryable do
+      ChatWork::Room.get
+    end
+
+    all_rooms.select { |room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
   end
 
   def room_name
-    set_token
-    room = ChatWork::Room.find(room_id: room_id)
+    room = with_retryable do
+      ChatWork::Room.find(room_id: room_id)
+    end
+
     return "My Chat" if room.type == "my"
     room.name
+  end
+
+  def with_retryable
+    set_token
+
+    yield
+  rescue ChatWork::AuthenticateError => error
+    retry_count ||= 0
+    retry_count += 1
+
+    if retry_count == 1 && error.error == "invalid_token"
+      refresh_access_token
+      retry
+    end
+
+    raise
   end
 
   private
 
     def set_token
       ChatWork.access_token = access_token
+    end
+
+    def refresh_access_token
+      tokens = ChatWork::Token.refresh_access_token(refresh_token)
+      self.access_token = tokens[:access_token]
+      self.refresh_token = tokens[:refresh_token]
+      self.access_token_expires_at = tokens[:expires_in].to_i.seconds.from_now
+      save!
     end
 end
