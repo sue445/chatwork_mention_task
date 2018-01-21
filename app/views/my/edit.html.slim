@@ -1,0 +1,9 @@
+h1 Edit
+
+= bootstrap_form_tag url: my_index_path, method: :put do |f|
+  = f.collection_select :room_id, @rooms, :room_id, :name, selected: current_user.room_id
+
+  a.btn.btn-secondary role="button" href=my_index_path
+    | Cancel
+
+  = f.primary

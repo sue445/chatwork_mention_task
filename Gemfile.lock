@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/bootstrap-ruby/rails-bootstrap-forms.git
+  revision: 6e0028aa6ec46ac240c7789793b09cd1cbb119bb
+  branch: master
+  specs:
+    bootstrap_form (4.0.0.dev)
+      rails (>= 5.0)
+
+GIT
   remote: https://github.com/ctran/annotate_models.git
   revision: e3e0bbe9fdcc23db49862cb1f9ce239e765e63b1
   branch: develop
@@ -62,6 +70,10 @@ GEM
       sass (>= 3.5.2)
     builder (3.2.3)
     byebug (9.1.0)
+    chatwork (0.6.1)
+      faraday (~> 0.9)
+      faraday_middleware
+      hashie
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
@@ -84,6 +96,8 @@ GEM
       rubicure (>= 1.0.5)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
     font-awesome-rails (4.7.0.3)
       railties (>= 3.2, < 5.2)
@@ -274,6 +288,8 @@ DEPENDENCIES
   annotate!
   bootsnap
   bootstrap
+  bootstrap_form!
+  chatwork
   connection_pool
   dalli
   dotenv-rails
