@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :webhook, only: [] do
+    collection do
+      post :skelton
+    end
+  end
+
   resources :auth, only: [] do
     collection do
       get :sign_in, to: redirect("/auth/chatwork")
