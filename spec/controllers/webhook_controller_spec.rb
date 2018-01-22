@@ -1,12 +1,7 @@
-require 'rails_helper'
-
 RSpec.describe WebhookController, type: :controller do
+  xdescribe "POST #mention" do
+    subject { post :mention }
 
-  describe "GET #mention" do
-    it "returns http success" do
-      get :mention
-      expect(response).to have_http_status(:success)
-    end
+    it { should have_http_status 200 }
   end
-
 end
