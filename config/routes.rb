@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'webhook/mention'
   resources :auth, only: [] do
     collection do
       get :sign_in, to: redirect("/auth/chatwork")
