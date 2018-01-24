@@ -4,17 +4,17 @@ class WebhookController < ApplicationController
   before_action :verify_signature!
 
   def account
-    message = WebhookController.format_message(params: params, account_type: @user.account_type)
+    message = WebhookController.format_message(webhook_event: params, account_type: @user.account_type)
 
     @user.create_my_task(message)
 
     render plain: "OK", status: 200
   end
 
-  # @params params [Hash]
+  # @params webhook_event [Hash]
   # @params account_type [String] `chatwork_com`, `kddi_chatwork`
   # @return [String]
-  def self.format_message(params:, account_type:)
+  def self.format_message(webhook_event:, account_type:)
     url_prefix =
       case account_type
       when "chatwork_com"
@@ -22,10 +22,10 @@ class WebhookController < ApplicationController
       when "kddi_chatwork"
         "https://kcw.kddi.ne.jp"
       end
-    message_url = "#{url_prefix}/#!rid#{params[:room_id]}-#{params[:message_id]}"
+    message_url = "#{url_prefix}/#!rid#{webhook_event[:room_id]}-#{webhook_event[:message_id]}"
 
     <<~MSG
-      [qt][qtmeta aid=#{params[:from_account_id]} time=#{params[:send_time]}]#{params[:body]}[/qt]
+      [qt][qtmeta aid=#{webhook_event[:from_account_id]} time=#{webhook_event[:send_time]}]#{webhook_event[:body]}[/qt]
       #{message_url}
     MSG
   end

@@ -39,9 +39,9 @@ RSpec.describe WebhookController, type: :controller do
   end
 
   describe ".format_message" do
-    subject { WebhookController.format_message(params: params, account_type: account_type) }
+    subject { WebhookController.format_message(webhook_event: webhook_event, account_type: account_type) }
 
-    let(:params) do
+    let(:webhook_event) do
       {
         from_account_id: 1_234_567_890,
         to_account_id:   1_484_814,
