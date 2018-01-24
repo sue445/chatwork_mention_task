@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :webhook, only: [] do
     collection do
-      post :skelton
+      post "account/:account_id" => "webhook#account", as: :account
     end
   end
 

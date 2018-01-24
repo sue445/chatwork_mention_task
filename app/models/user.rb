@@ -18,6 +18,7 @@
 # **`created_at`**                | `datetime`         | `not null`
 # **`updated_at`**                | `datetime`         | `not null`
 # **`webhook_token`**             | `string`           |
+# **`account_type`**              | `integer`          | `default(0), not null`
 #
 # ### Indexes
 #
@@ -32,6 +33,8 @@ class User < ApplicationRecord
   REFRESH_TOKEN_EXPIRES_IN = 14.days
 
   auto_strip_attributes :webhook_token
+
+  enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }
 
   def self.register(auth_hash)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|

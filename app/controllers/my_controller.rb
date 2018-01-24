@@ -23,6 +23,6 @@ class MyController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:room_id, :webhook_token)
+      params.require(:user).permit(:room_id, :webhook_token, :account_type)
     end
 end
