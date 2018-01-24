@@ -34,6 +34,8 @@ class User < ApplicationRecord
 
   auto_strip_attributes :webhook_token
 
+  enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }
+
   def self.register(auth_hash)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
       u.room_id = auth_hash[:extra][:raw_info][:room_id]
