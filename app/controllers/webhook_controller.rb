@@ -18,6 +18,9 @@ class WebhookController < ApplicationController
   # rubocop:enable all
 
   def account
+    message = WebhookController.format_message(params: params, account_type: @user.account_type)
+
+    ChatWork::Task.create(room_id: @user.room_id, body: message, to_ids: @user.account_id)
 
     render plain: "OK", status: 200
   end
