@@ -11,7 +11,7 @@ RSpec.describe WebhookController, type: :controller do
 
     let(:params) do
       {
-        account_id:      user.account_id,
+        account_id: user.account_id,
         webhook_event: {
           from_account_id: 1_234_567_890,
           to_account_id:   1_484_814,
