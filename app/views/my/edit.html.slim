@@ -1,6 +1,8 @@
 h1 Edit
 
 = bootstrap_form_for(@user, url: my_index_path, method: :put) do |f|
+  = f.collection_radio_buttons :account_type, User.account_types_i18n, :first, :last
+
   = f.collection_select :room_id, @rooms, :room_id, :name, label: "Room to notify", selected: current_user.room_id
 
   = f.text_field :webhook_token, required: true

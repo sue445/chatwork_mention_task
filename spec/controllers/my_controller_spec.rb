@@ -27,16 +27,19 @@ RSpec.describe MyController, :logged_in, type: :controller do
         user: {
           room_id:       room_id,
           webhook_token: webhook_token,
+          account_type:  account_type,
         },
       }
     end
 
     let(:room_id)       { 1234 }
     let(:webhook_token) { "token" }
+    let(:account_type)  { "kddi_chatwork" }
 
     it { should redirect_to my_index_path }
 
     it { expect { subject }.to change { current_user.room_id }.to(room_id) }
     it { expect { subject }.to change { current_user.webhook_token }.to(webhook_token) }
+    it { expect { subject }.to change { current_user.account_type }.to(account_type) }
   end
 end
