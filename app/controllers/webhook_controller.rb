@@ -4,7 +4,7 @@ class WebhookController < ApplicationController
   before_action :verify_signature!
 
   def account
-    message = WebhookController.format_message(webhook_event: params, account_type: @user.account_type)
+    message = WebhookController.format_message(webhook_event: params[:webhook_event], account_type: @user.account_type)
 
     @user.create_my_task(message)
 
