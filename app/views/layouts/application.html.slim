@@ -28,7 +28,7 @@ html lang="en"
                 = image_tag current_user.avatar_image_url, size: "32x32", class: "rounded mx-auto"
                 = current_user.name
               .dropdown-menu aria-labelledby="navbarDropdown"
-                a.dropdown-item href=me_index_path
+                a.dropdown-item href=me_path
                   = fa_icon "cog", text: "Settings"
                 .dropdown-divider
                 a.dropdown-item href=sign_out_auth_index_path

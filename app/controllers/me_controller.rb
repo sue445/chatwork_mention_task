@@ -3,7 +3,7 @@ class MeController < ApplicationController
 
   before_action :set_user
 
-  def index
+  def show
   end
 
   def edit
@@ -13,7 +13,7 @@ class MeController < ApplicationController
   def update
     @user.update!(user_params)
 
-    redirect_to me_index_path
+    redirect_to me_path
   end
 
   private

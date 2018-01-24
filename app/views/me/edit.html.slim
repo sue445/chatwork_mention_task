@@ -1,6 +1,6 @@
 h1 Edit
 
-= bootstrap_form_for(@user, url: me_index_path, method: :put) do |f|
+= bootstrap_form_for(@user, url: me_path, method: :put) do |f|
   = f.collection_radio_buttons :account_type, User.account_types_i18n, :first, :last
 
   = f.collection_select :room_id, @rooms, :room_id, :name, label: "Room to notify", selected: current_user.room_id
@@ -34,7 +34,7 @@ h1 Edit
         | Copy and paste a
         code< token
 
-  a.btn.btn-secondary role="button" href=me_index_path
+  a.btn.btn-secondary role="button" href=me_path
     | Cancel
 
   = f.primary
