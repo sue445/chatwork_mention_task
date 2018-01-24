@@ -18,6 +18,7 @@
 # **`created_at`**                | `datetime`         | `not null`
 # **`updated_at`**                | `datetime`         | `not null`
 # **`webhook_token`**             | `string`           |
+# **`account_type`**              | `integer`          | `default(0), not null`
 #
 # ### Indexes
 #
