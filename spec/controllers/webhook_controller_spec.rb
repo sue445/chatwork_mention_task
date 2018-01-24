@@ -11,14 +11,16 @@ RSpec.describe WebhookController, type: :controller do
 
     let(:params) do
       {
-        account_id:      user.account_id,
-        from_account_id: 1_234_567_890,
-        to_account_id:   1_484_814,
-        room_id:         567_890_123,
-        message_id:      "789012345",
-        body:            "[To:1484814]Hello",
-        send_time:       1_498_028_125,
-        update_time:     0,
+        account_id: user.account_id,
+        webhook_event: {
+          from_account_id: 1_234_567_890,
+          to_account_id:   1_484_814,
+          room_id:         567_890_123,
+          message_id:      "789012345",
+          body:            "[To:1484814]Hello",
+          send_time:       1_498_028_125,
+          update_time:     0,
+        },
       }
     end
 
@@ -39,9 +41,9 @@ RSpec.describe WebhookController, type: :controller do
   end
 
   describe ".format_message" do
-    subject { WebhookController.format_message(params: params, account_type: account_type) }
+    subject { WebhookController.format_message(webhook_event: webhook_event, account_type: account_type) }
 
-    let(:params) do
+    let(:webhook_event) do
       {
         from_account_id: 1_234_567_890,
         to_account_id:   1_484_814,
