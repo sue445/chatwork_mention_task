@@ -9,6 +9,7 @@ gem "bootsnap", require: false
 gem "bootstrap"
 gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master"
 gem "chatwork"
+gem "chatwork_webhook_verify"
 gem "connection_pool"
 gem "dalli"
 gem "font-awesome-rails"
