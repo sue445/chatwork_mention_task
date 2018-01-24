@@ -17,6 +17,7 @@
 # **`refresh_token_expires_at`**  | `datetime`         | `not null`
 # **`created_at`**                | `datetime`         | `not null`
 # **`updated_at`**                | `datetime`         | `not null`
+# **`webhook_token`**             | `string`           |
 #
 # ### Indexes
 #
