@@ -1,6 +1,8 @@
 class WebhookController < ApplicationController
   protect_from_forgery only: []
 
+  before_action :verify_signature!
+
   # rubocop:disable all
   def skelton
     # TODO: skelton
@@ -14,4 +16,10 @@ class WebhookController < ApplicationController
     render plain: "OK", status: 200
   end
   # rubocop:enable all
+
+  private
+
+    def verify_signature!
+      verify_chatwork_webhook_signature!(ENV["CHATWORK_WEBHOOK_TOKEN"])
+    end
 end
