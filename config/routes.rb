@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  resources :my, only: [:index] do
+  resources :me, only: [:index] do
     collection do
       get :edit
       put :update

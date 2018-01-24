@@ -1,4 +1,4 @@
-RSpec.describe MyController, :logged_in, type: :controller do
+RSpec.describe MeController, :logged_in, type: :controller do
   describe "GET #index" do
     subject { get :index }
 
@@ -36,7 +36,7 @@ RSpec.describe MyController, :logged_in, type: :controller do
     let(:webhook_token) { "token" }
     let(:account_type)  { "kddi_chatwork" }
 
-    it { should redirect_to my_index_path }
+    it { should redirect_to me_index_path }
 
     it { expect { subject }.to change { current_user.room_id }.to(room_id) }
     it { expect { subject }.to change { current_user.webhook_token }.to(webhook_token) }
