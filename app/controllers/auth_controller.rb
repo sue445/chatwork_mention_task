@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     user = User.register(auth_hash)
     session[:user_id] = user.id
 
-    redirect_to my_index_path
+    redirect_to me_path
   end
 
   def sign_out

@@ -15,12 +15,7 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  resources :my, only: [:index] do
-    collection do
-      get :edit
-      put :update
-    end
-  end
+  resource :me, only: [:show, :edit, :update]
 
   root to: "home#index"
 

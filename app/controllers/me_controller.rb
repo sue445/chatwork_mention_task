@@ -1,9 +1,9 @@
-class MyController < ApplicationController
+class MeController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_user
 
-  def index
+  def show
   end
 
   def edit
@@ -13,7 +13,7 @@ class MyController < ApplicationController
   def update
     @user.update!(user_params)
 
-    redirect_to my_index_path
+    redirect_to me_path
   end
 
   private
