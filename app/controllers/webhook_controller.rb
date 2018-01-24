@@ -6,7 +6,7 @@ class WebhookController < ApplicationController
   def account
     message = WebhookController.format_message(params: params, account_type: @user.account_type)
 
-    ChatWork::Task.create(room_id: @user.room_id, body: message, to_ids: @user.account_id) # rubocop:disable Rails/SaveBang
+    @user.create_my_task(message)
 
     render plain: "OK", status: 200
   end
