@@ -22,10 +22,22 @@ class WebhookController < ApplicationController
     render plain: "OK", status: 200
   end
 
+  # @params params [Hash]
+  # @params account_type [String] `chatwork_com`, `kddi_chatwork`
   # @return [String]
-  def self.format_message(params)
+  def self.format_message(params:, account_type:)
+    url_prefix =
+      case account_type
+      when "chatwork_com"
+        "https://www.chatwork.com"
+      when "kddi_chatwork"
+        "https://kcw.kddi.ne.jp"
+      end
+    message_url = "#{url_prefix}/#!rid#{params[:room_id]}-#{params[:message_id]}"
+
     <<~MSG
       [qt][qtmeta aid=#{params[:from_account_id]} time=#{params[:send_time]}]#{params[:body]}[/qt]
+      #{message_url}
     MSG
   end
 

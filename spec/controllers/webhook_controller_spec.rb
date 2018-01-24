@@ -12,7 +12,7 @@ RSpec.describe WebhookController, type: :controller do
   end
 
   describe ".format_message" do
-    subject { WebhookController.format_message(params) }
+    subject { WebhookController.format_message(params: params, account_type: account_type) }
 
     let(:params) do
       {
@@ -29,8 +29,11 @@ RSpec.describe WebhookController, type: :controller do
     let(:message) do
       <<~MSG
         [qt][qtmeta aid=1234567890 time=1498028125][To:1484814]Hello[/qt]
+        https://www.chatwork.com/#!rid567890123-789012345
       MSG
     end
+
+    let(:account_type) { "chatwork_com" }
 
     it { should eq message }
   end
