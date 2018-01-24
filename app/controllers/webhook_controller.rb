@@ -22,6 +22,13 @@ class WebhookController < ApplicationController
     render plain: "OK", status: 200
   end
 
+  # @return [String]
+  def self.format_message(params)
+    <<~MSG
+      [qt][qtmeta aid=#{params[:from_account_id]} time=#{params[:send_time]}]#{params[:body]}[/qt]
+    MSG
+  end
+
   private
 
     def verify_signature!
