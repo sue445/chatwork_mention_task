@@ -26,8 +26,7 @@ h1 Edit
         ul
           li
             | Webhook URL:
-            / TODO: use `_path` helper
-            code< https://chatwork-mention-task.herokuapp.com/webhook/accoount/#{@user.account_id}
+            code< = account_webhook_index_url(account_id: @user.account_id)
           li Event: Account Event
       li
         | Copy and paste a
