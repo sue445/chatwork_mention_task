@@ -1,7 +1,37 @@
 h1 Edit
 
-= bootstrap_form_tag url: my_index_path, method: :put do |f|
-  = f.collection_select :room_id, @rooms, :room_id, :name, selected: current_user.room_id
+= bootstrap_form_for(@user, url: my_index_path, method: :put) do |f|
+  = f.collection_select :room_id, @rooms, :room_id, :name, label: "Room to notify", selected: current_user.room_id
+
+  = f.text_field :webhook_token, required: true
+
+  .alert.alert-info role="alert"
+    p You must create your webhook and register a token here.
+
+    h2 Step
+    ol
+      li
+        | If you are a&nbsp;
+        = link_to "ChatWork", "https://www.chatwork.com/"
+        | &nbsp;user, go to&nbsp;
+        = link_to "here", "https://www.chatwork.com/service/packages/chatwork/subpackages/webhook/list.php"
+        | . Or you are a&nbsp;
+        = link_to "KDDI ChatWork", "https://kcw.kddi.ne.jp/"
+        | &nbsp;user, go to&nbsp;
+        = link_to "here", "https://kcw.kddi.ne.jp/service/packages/chatwork/subpackages/webhook/list.php"
+        | .
+      li Go to "Create New"
+      li
+        | Create new webhook
+        ul
+          li
+            | Webhook URL:
+            / TODO: use `_path` helper
+            code< https://chatwork-mention-task.herokuapp.com/webhook/accoount/#{@user.account_id}
+          li Event: Account Event
+      li
+        | Copy and paste a
+        code< token
 
   a.btn.btn-secondary role="button" href=my_index_path
     | Cancel

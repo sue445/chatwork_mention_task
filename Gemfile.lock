@@ -60,6 +60,8 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.3.0)
+    auto_strip_attributes (2.2.0)
+      activerecord (>= 3.0)
     autoprefixer-rails (7.2.5)
       execjs
     bootsnap (1.1.8)
@@ -287,6 +289,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate!
+  auto_strip_attributes
   bootsnap
   bootstrap
   bootstrap_form!

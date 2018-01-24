@@ -2,13 +2,16 @@ h1 Settings
 
 dl
   dt Account ID
-  dd = current_user.account_id
+  dd = @user.account_id
 
   dt Room to notify
-  dd = current_user.room_name
+  dd = @user.room_name
+
+  dt Webhook token
+  dd = @user.webhook_token
 
   dt Expires at for refresh token
-  dd = current_user.refresh_token_expires_at
+  dd = @user.refresh_token_expires_at
 
 a.btn.btn-primary role="button" href=edit_my_index_path
   = fa_icon "cog", text: "Edit"

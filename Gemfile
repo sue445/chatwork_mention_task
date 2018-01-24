@@ -5,6 +5,7 @@ ruby "2.5.0"
 
 gem "rails", "~> 5.2.0.beta2"
 
+gem "auto_strip_attributes"
 gem "bootsnap", require: false
 gem "bootstrap"
 gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master"
