@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  enums:
+    user:
+      account_type:
+        chatwork_com: "ChatWork"
+        kddi_chatwork: "KDDI ChatWork"
