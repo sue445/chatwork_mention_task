@@ -17,9 +17,16 @@ class WebhookController < ApplicationController
   end
   # rubocop:enable all
 
+  def account
+
+    render plain: "OK", status: 200
+  end
+
   private
 
     def verify_signature!
-      verify_chatwork_webhook_signature!(ENV["CHATWORK_WEBHOOK_TOKEN"])
+      @user = User.find_by!(account_id: params[:account_id])
+
+      verify_chatwork_webhook_signature!(@user.webhook_token)
     end
 end
