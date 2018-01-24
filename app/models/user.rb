@@ -71,7 +71,7 @@ class User < ApplicationRecord
 
   def create_task(room_id:, body:, to_ids:)
     with_retryable do
-      ChatWork::Task.create(room_id: room_id, body: body, to_ids: to_ids) # rubocop:disable Rails/SaveBang
+      ChatWork::Task.create(room_id: room_id, body: body, to_ids: to_ids)
     end
   end
 
