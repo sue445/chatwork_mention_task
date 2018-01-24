@@ -1,6 +1,8 @@
 class MyController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_user
+
   def index
   end
 
@@ -9,9 +11,18 @@ class MyController < ApplicationController
   end
 
   def update
-    current_user.room_id = params[:room_id]
-    current_user.save!
+    @user.update!(user_params)
 
     redirect_to my_index_path
   end
+
+  private
+
+    def set_user
+      @user = current_user
+    end
+
+    def user_params
+      params.require(:user).permit(:room_id, :webhook_token)
+    end
 end

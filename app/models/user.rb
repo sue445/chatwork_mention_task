@@ -31,6 +31,8 @@ class User < ApplicationRecord
   # c.f. http://download.chatwork.com/ChatWork_API_Documentation.pdf
   REFRESH_TOKEN_EXPIRES_IN = 14.days
 
+  auto_strip_attributes :webhook_token
+
   def self.register(auth_hash)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
       u.room_id = auth_hash[:extra][:raw_info][:room_id]
