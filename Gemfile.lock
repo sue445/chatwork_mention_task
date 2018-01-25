@@ -15,6 +15,14 @@ GIT
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
 
+GIT
+  remote: https://github.com/sue445/komachi_heartbeat.git
+  revision: c66036d869567a5ce67367299bbe89ba78c7765b
+  branch: redis_to_development_dependency
+  specs:
+    komachi_heartbeat (2.5.0)
+      rails (>= 4.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -309,6 +317,7 @@ DEPENDENCIES
   global
   jbuilder
   jquery-rails
+  komachi_heartbeat!
   listen
   newrelic_rpm
   omniauth-chatwork
