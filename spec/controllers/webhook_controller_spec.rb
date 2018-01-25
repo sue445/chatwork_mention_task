@@ -12,6 +12,9 @@ RSpec.describe WebhookController, type: :controller do
     let(:params) do
       {
         account_id: user.account_id,
+        webhook_setting_id: "12345",
+        webhook_event_type: "mention_to_me",
+        webhook_event_time: 1_498_028_130,
         webhook_event: {
           from_account_id: 1_234_567_890,
           to_account_id:   1_484_814,
