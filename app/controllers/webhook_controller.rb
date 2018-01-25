@@ -4,6 +4,8 @@ class WebhookController < ApplicationController
   before_action :verify_signature!
 
   def account
+    raise ActionController::BadRequest, "webhook_event_type is not mention_to_me" unless params[:webhook_event_type] == "mention_to_me"
+
     message = WebhookController.format_message(webhook_event: params[:webhook_event], account_type: @user.account_type)
 
     @user.create_my_task(message)

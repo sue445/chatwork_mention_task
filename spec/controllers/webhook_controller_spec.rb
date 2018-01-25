@@ -12,6 +12,9 @@ RSpec.describe WebhookController, type: :controller do
     let(:params) do
       {
         account_id: user.account_id,
+        webhook_setting_id: "12345",
+        webhook_event_type: webhook_event_type,
+        webhook_event_time: 1_498_028_130,
         webhook_event: {
           from_account_id: 1_234_567_890,
           to_account_id:   1_484_814,
@@ -24,19 +27,29 @@ RSpec.describe WebhookController, type: :controller do
       }
     end
 
-    let(:message) do
-      <<~MSG
-        [qt][qtmeta aid=1234567890 time=1498028125][To:1484814]Hello[/qt]
-        https://www.chatwork.com/#!rid567890123-789012345
-      MSG
+    context "when webhook_event_type is mention_to_me" do
+      let(:webhook_event_type) { "mention_to_me" }
+
+      let(:message) do
+        <<~MSG
+          [qt][qtmeta aid=1234567890 time=1498028125][To:1484814]Hello[/qt]
+          https://www.chatwork.com/#!rid567890123-789012345
+        MSG
+      end
+
+      it { should have_http_status 200 }
+
+      it "called ChatWork::Task.create" do
+        subject
+
+        expect(ChatWork::Task).to have_received(:create).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id))
+      end
     end
 
-    it { should have_http_status 200 }
+    context "when webhook_event_type is not mention_to_me" do
+      let(:webhook_event_type) { "message_created" }
 
-    it "called ChatWork::Task.create" do
-      subject
-
-      expect(ChatWork::Task).to have_received(:create).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id))
+      it { expect { subject }.to raise_error ActionController::BadRequest }
     end
   end
 
