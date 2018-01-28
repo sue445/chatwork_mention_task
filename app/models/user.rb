@@ -52,7 +52,10 @@ class User < ApplicationRecord
     user.refresh_token           = auth_hash[:credentials][:refresh_token]
     user.access_token_expires_at = Time.zone.at(auth_hash[:credentials][:expires_at])
 
-    user.refresh_token_expires_at = REFRESH_TOKEN_EXPIRES_IN.from_now if user.refresh_token_changed?
+    if user.refresh_token_changed?
+      user.refresh_token_expires_at = REFRESH_TOKEN_EXPIRES_IN.from_now
+      user.refresh_token_reminded_at = nil
+    end
 
     user.save!
 
