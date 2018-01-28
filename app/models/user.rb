@@ -31,9 +31,12 @@ require "chatwork/chatwork_error"
 
 class User < ApplicationRecord
   include User::ApiModule
+  include User::ReminderModule
 
   # c.f. http://download.chatwork.com/ChatWork_API_Documentation.pdf
   REFRESH_TOKEN_EXPIRES_IN = 14.days
+
+  REFRESH_TOKEN_EXPIRES_REMIND = 1.days
 
   auto_strip_attributes :webhook_token
 
