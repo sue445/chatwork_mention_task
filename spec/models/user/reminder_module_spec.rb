@@ -48,7 +48,7 @@ RSpec.describe User::ReminderModule, type: :model do
         [info][title]from ChatworkMentionTask[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
         Please sign in again so far.
 
-        #{Global.app.root_url}[/info]
+        #{Global.app.root_url}/auth/sign_in[/info]
       MSG
       expect(user).to have_received(:create_my_task).with(body, limit_at: refresh_token_expires_at)
     end
