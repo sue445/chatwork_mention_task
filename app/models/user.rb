@@ -25,6 +25,8 @@
 #
 # * `index_users_on_account_id` (_unique_):
 #     * **`account_id`**
+# * `index_users_on_refresh_token_expires_at`:
+#     * **`refresh_token_expires_at`**
 #
 
 require "chatwork/chatwork_error"
