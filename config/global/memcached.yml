@@ -16,4 +16,4 @@ production:
     username: <%= ENV["MEMCACHEDCLOUD_USERNAME"] %>
     password: <%= ENV["MEMCACHEDCLOUD_PASSWORD"] %>
   session:
-    expire_after: <%= 7.day %>
+    expire_after: <%= 1.day %>
