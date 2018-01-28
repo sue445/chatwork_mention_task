@@ -10,6 +10,14 @@ module User::ReminderModule
     include Rails.application.routes.url_helpers
   end
 
+  class_methods do
+    def remind_refresh_token_will_expire
+      remind_target.each do |user| # rubocop:disable Style/SymbolProc
+        user.create_remind_task
+      end
+    end
+  end
+
   def create_remind_task
     body = <<~MSG
       [info][title]from ChatworkMentionTask[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.

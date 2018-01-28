@@ -11,6 +11,26 @@ RSpec.describe User::ReminderModule, type: :model do
     it { should eq [@user2] }
   end
 
+  describe ".remind_refresh_token_will_expire" do
+    subject { User.remind_refresh_token_will_expire }
+
+    before do
+      @user1 = create(:user, refresh_token_expires_at: 14.days.from_now)
+      @user2 = create(:user, refresh_token_expires_at: refresh_token_expires_at)
+      @user3 = create(:user, refresh_token_expires_at: refresh_token_expires_at, refresh_token_reminded_at: 10.minutes.ago)
+
+      allow(ChatWork::Task).to receive(:create)
+    end
+
+    let(:refresh_token_expires_at) { 1.hour.from_now }
+
+    it "called create_remind_task" do
+      subject
+
+      expect(ChatWork::Task).to have_received(:create).with(hash_including(limit: refresh_token_expires_at.to_i)).once
+    end
+  end
+
   describe "#create_remind_task", :time_stop do
     subject { user.create_remind_task }
 
