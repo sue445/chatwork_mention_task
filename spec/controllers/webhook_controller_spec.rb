@@ -42,7 +42,7 @@ RSpec.describe WebhookController, type: :controller do
       it "called ChatWork::Task.create" do
         subject
 
-        expect(ChatWork::Task).to have_received(:create).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id))
+        expect(ChatWork::Task).to have_received(:create).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id, limit: nil))
       end
     end
 

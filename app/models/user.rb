@@ -70,14 +70,14 @@ class User < ApplicationRecord
     room.name
   end
 
-  def create_task(room_id:, body:, to_ids:)
+  def create_task(room_id:, body:, to_ids:, limit_at: nil)
     with_retryable do
-      ChatWork::Task.create(room_id: room_id, body: body, to_ids: to_ids)
+      ChatWork::Task.create(room_id: room_id, body: body, to_ids: to_ids, limit: limit_at&.to_i)
     end
   end
 
-  def create_my_task(body)
-    create_task(room_id: room_id, body: body, to_ids: account_id)
+  def create_my_task(body, limit_at: nil)
+    create_task(room_id: room_id, body: body, to_ids: account_id, limit_at: limit_at)
   end
 
   def with_retryable
