@@ -44,7 +44,7 @@ class User < ApplicationRecord
     user.avatar_image_url        = auth_hash[:info][:image]
     user.access_token            = auth_hash[:credentials][:token]
     user.refresh_token           = auth_hash[:credentials][:refresh_token]
-    user.access_token_expires_at = auth_hash[:credentials][:expires_at].seconds.from_now
+    user.access_token_expires_at = Time.zone.at(auth_hash[:credentials][:expires_at])
 
     user.refresh_token_expires_at = REFRESH_TOKEN_EXPIRES_IN.from_now if user.refresh_token_changed?
 

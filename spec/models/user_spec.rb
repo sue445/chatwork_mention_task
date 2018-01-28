@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
       its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
       its(:access_token)             { should eq "access_token" }
       its(:refresh_token)            { should eq "refresh_token" }
-      its(:access_token_expires_at)  { should match_unixtime(1_510_504_991.seconds.from_now) }
+      its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
       its(:refresh_token_expires_at) { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
     end
 
@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
         its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
         its(:access_token)             { should eq "access_token" }
         its(:refresh_token)            { should eq "refresh_token" }
-        its(:access_token_expires_at)  { should match_unixtime(1_510_504_991.seconds.from_now) }
+        its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
         its(:refresh_token_expires_at) { should match_unixtime(1.day.ago) }
       end
 
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
         its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
         its(:access_token)             { should eq "access_token" }
         its(:refresh_token)            { should eq "refresh_token" }
-        its(:access_token_expires_at)  { should match_unixtime(1_510_504_991.seconds.from_now) }
+        its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
         its(:refresh_token_expires_at) { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
       end
     end
