@@ -50,14 +50,14 @@ RSpec.describe User, type: :model do
     context "when user is not registered" do
       it { expect { subject }.to change { User.count }.by(1) }
 
-      its(:account_id)               { should eq 1_111_111 }
-      its(:room_id)                  { should eq 2_222_222 }
-      its(:name)                     { should eq "sue445" }
-      its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
-      its(:access_token)             { should eq "access_token" }
-      its(:refresh_token)            { should eq "refresh_token" }
-      its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
-      its(:refresh_token_expires_at) { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
+      its(:account_id)                { should eq 1_111_111 }
+      its(:room_id)                   { should eq 2_222_222 }
+      its(:name)                      { should eq "sue445" }
+      its(:avatar_image_url)          { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
+      its(:access_token)              { should eq "access_token" }
+      its(:refresh_token)             { should eq "refresh_token" }
+      its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
+      its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
       its(:refresh_token_reminded_at) { should eq nil }
     end
 
@@ -82,14 +82,14 @@ RSpec.describe User, type: :model do
 
         it { expect { subject }.to change { User.count }.by(0) }
 
-        its(:account_id)               { should eq 1_111_111 }
-        its(:room_id)                  { should eq 2_222_222 }
-        its(:name)                     { should eq "sue445" }
-        its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
-        its(:access_token)             { should eq "access_token" }
-        its(:refresh_token)            { should eq "refresh_token" }
-        its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
-        its(:refresh_token_expires_at) { should match_unixtime(refresh_token_expires_at) }
+        its(:account_id)                { should eq 1_111_111 }
+        its(:room_id)                   { should eq 2_222_222 }
+        its(:name)                      { should eq "sue445" }
+        its(:avatar_image_url)          { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
+        its(:access_token)              { should eq "access_token" }
+        its(:refresh_token)             { should eq "refresh_token" }
+        its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
+        its(:refresh_token_expires_at)  { should match_unixtime(refresh_token_expires_at) }
         its(:refresh_token_reminded_at) { should eq refresh_token_reminded_at }
       end
 
@@ -98,14 +98,14 @@ RSpec.describe User, type: :model do
 
         it { expect { subject }.to change { User.count }.by(0) }
 
-        its(:account_id)               { should eq 1_111_111 }
-        its(:room_id)                  { should eq 2_222_222 }
-        its(:name)                     { should eq "sue445" }
-        its(:avatar_image_url)         { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
-        its(:access_token)             { should eq "access_token" }
-        its(:refresh_token)            { should eq "refresh_token" }
-        its(:access_token_expires_at)  { should match_unixtime(Time.zone.at(1_510_504_991)) }
-        its(:refresh_token_expires_at) { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
+        its(:account_id)                { should eq 1_111_111 }
+        its(:room_id)                   { should eq 2_222_222 }
+        its(:name)                      { should eq "sue445" }
+        its(:avatar_image_url)          { should eq "https://appdata.chatwork.com/avatar/ico_default_blue.png" }
+        its(:access_token)              { should eq "access_token" }
+        its(:refresh_token)             { should eq "refresh_token" }
+        its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
+        its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
         its(:refresh_token_reminded_at) { should eq nil }
       end
     end
