@@ -30,5 +30,7 @@ module User::ReminderModule
 
     self.refresh_token_reminded_at = Time.current
     save!
+
+    Rails.logger.info "[User#create_remind_task] Notified remind to account_id=#{account_id}"
   end
 end
