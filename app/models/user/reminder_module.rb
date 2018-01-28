@@ -21,7 +21,7 @@ module User::ReminderModule
       [info][title]from ChatworkMentionTask[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
       Please sign in again so far.
 
-      #{Global.app.root_url}[/info]
+      #{Global.app.root_url}/auth/sign_in[/info]
     MSG
 
     create_my_task(body, limit_at: refresh_token_expires_at)

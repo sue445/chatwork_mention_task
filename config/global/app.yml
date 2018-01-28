@@ -1,5 +1,5 @@
 default:
-  root_url: "https://localhost/"
+  root_url: "https://localhost"
 
 production:
-  root_url: "https://chatwork-mention-task.herokuapp.com/"
+  root_url: "https://chatwork-mention-task.herokuapp.com"
