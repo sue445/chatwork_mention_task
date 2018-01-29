@@ -59,6 +59,20 @@ jobs:
 
       - run: bundle exec rspec
 
+  index_shotgun:
+    <<: *default
+
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+
+      - run: ./.circleci/bundle_install.sh
+      - run: ./.circleci/setup_database.sh
+
+      - run: ./bin/rails index_shotgun:fire
+
   rubocop:
     <<: *default
 
@@ -94,12 +108,16 @@ workflows:
       - rspec:
           requires:
             - bundle_dependencies
+      - index_shotgun:
+          requires:
+            - bundle_dependencies
       - rubocop:
           requires:
             - bundle_dependencies
       - deploy:
           requires:
             - rspec
+            - index_shotgun
             - rubocop
           filters:
             branches:
