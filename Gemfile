@@ -36,6 +36,7 @@ group :development do
 
   gem "dotenv-rails"
   gem "foreman", require: false
+  gem "index_shotgun", group: :test
   gem "listen"
   gem "onkcop", require: false
   gem "pry-byebug", group: :test

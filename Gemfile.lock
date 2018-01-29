@@ -124,6 +124,9 @@ GEM
     hashie (3.5.7)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
+    index_shotgun (0.3.0)
+      activerecord
+      thor
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -315,6 +318,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   global
+  index_shotgun
   jbuilder
   jquery-rails
   komachi_heartbeat!
