@@ -1,4 +1,4 @@
-# ChatworkMentionTask
+# ChatWorkMentionTask
 https://chatwork-mention-task.herokuapp.com/
 
 ## Requirements
