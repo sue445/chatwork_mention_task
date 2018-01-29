@@ -1,5 +1,9 @@
 default:
   root_url: "https://localhost"
 
+  verify_signature: false
+
 production:
   root_url: "https://chatwork-mention-task.herokuapp.com"
+
+  verify_signature: true

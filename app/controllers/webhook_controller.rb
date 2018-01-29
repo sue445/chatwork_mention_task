@@ -1,6 +1,7 @@
 class WebhookController < ApplicationController
   protect_from_forgery only: []
 
+  before_action :set_user
   before_action :verify_signature!
 
   def account
@@ -34,8 +35,12 @@ class WebhookController < ApplicationController
 
   private
 
-    def verify_signature!
+    def set_user
       @user = User.find_by!(account_id: params[:account_id])
+    end
+
+    def verify_signature!
+      return unless Global.app.verify_signature?
 
       verify_chatwork_webhook_signature!(@user.webhook_token)
     end
