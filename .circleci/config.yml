@@ -55,16 +55,7 @@ jobs:
           key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
 
       - run: ./.circleci/bundle_install.sh
-
-      # https://circleci.com/docs/2.0/postgres-config/#using-dockerize
-      # dockerize is already installed in circleci/ruby
-      - run:
-          name: Wait for db
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # Database setup
-      - run: ./bin/rails db:create
-      - run: ./bin/rails db:schema:load
+      - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
 
