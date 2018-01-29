@@ -10,6 +10,7 @@ https://chatwork-mention-task.herokuapp.com/
 ## Setup
 ```bash
 ./bin/setup
+vi .env
 
 bundle exec foreman s
 ```
