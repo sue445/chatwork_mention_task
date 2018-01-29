@@ -3,7 +3,6 @@ RSpec.describe WebhookController, type: :controller do
     subject { post :account, params: params }
 
     before do
-      allow(controller).to receive(:verify_chatwork_webhook_signature!).with(user.webhook_token)
       allow(ChatWork::Task).to receive(:create)
     end
 
