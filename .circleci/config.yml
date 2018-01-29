@@ -82,6 +82,7 @@ jobs:
       - restore_cache:
           key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
       - run: ./.circleci/bundle_install.sh
+
       - run: bundle exec rubocop
 
   deploy:
