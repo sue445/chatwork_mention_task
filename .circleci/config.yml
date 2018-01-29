@@ -56,11 +56,8 @@ jobs:
 
       - run: ./.circleci/bundle_install.sh
 
-      - run:
-          name: install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
+      # https://circleci.com/docs/2.0/postgres-config/#using-dockerize
+      # dockerize is already installed in circleci/ruby
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
