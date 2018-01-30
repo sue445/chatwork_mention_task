@@ -38,7 +38,7 @@ class User < ApplicationRecord
   # c.f. http://download.chatwork.com/ChatWork_API_Documentation.pdf
   REFRESH_TOKEN_EXPIRES_IN = 14.days
 
-  REFRESH_TOKEN_EXPIRES_REMIND = 1.days
+  REFRESH_TOKEN_EXPIRES_REMIND = 3.days
 
   auto_strip_attributes :webhook_token
 
