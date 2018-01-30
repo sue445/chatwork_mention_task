@@ -18,7 +18,7 @@ module User::ReminderModule
 
   def create_remind_task
     body = <<~MSG
-      [info][title]from ChatworkMentionTask[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
+      [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
       Please sign in again so far.
 
       #{Global.app.root_url}/auth/sign_in[/info]
