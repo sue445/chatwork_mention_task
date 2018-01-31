@@ -11,6 +11,10 @@ class AuthController < ApplicationController
     redirect_to root_path
   end
 
+  def omniauth_failure
+    redirect_to root_path, flash: { error: params[:error] }
+  end
+
   private
 
     def auth_hash
