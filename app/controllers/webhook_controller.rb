@@ -44,4 +44,8 @@ class WebhookController < ApplicationController
 
       verify_chatwork_webhook_signature!(@user.webhook_token)
     end
+
+    def current_user
+      @user
+    end
 end
