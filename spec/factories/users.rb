@@ -1,3 +1,34 @@
+# ## Schema Information
+#
+# Table name: `users`
+#
+# ### Columns
+#
+# Name                             | Type               | Attributes
+# -------------------------------- | ------------------ | ---------------------------
+# **`id`**                         | `bigint(8)`        | `not null, primary key`
+# **`account_id`**                 | `integer`          | `not null`
+# **`room_id`**                    | `integer`          | `not null`
+# **`name`**                       | `string`           | `not null`
+# **`avatar_image_url`**           | `string`           | `not null`
+# **`access_token`**               | `string`           | `not null`
+# **`refresh_token`**              | `string`           | `not null`
+# **`access_token_expires_at`**    | `datetime`         | `not null`
+# **`refresh_token_expires_at`**   | `datetime`         | `not null`
+# **`created_at`**                 | `datetime`         | `not null`
+# **`updated_at`**                 | `datetime`         | `not null`
+# **`webhook_token`**              | `string`           |
+# **`account_type`**               | `integer`          | `default("chatwork_com"), not null`
+# **`refresh_token_reminded_at`**  | `datetime`         |
+#
+# ### Indexes
+#
+# * `index_users_on_account_id` (_unique_):
+#     * **`account_id`**
+# * `index_users_on_refresh_token_expires_at`:
+#     * **`refresh_token_expires_at`**
+#
+
 FactoryBot.define do
   factory :user do
     sequence(:account_id) { |n| n }
