@@ -29,8 +29,6 @@
 #     * **`refresh_token_expires_at`**
 #
 
-require "chatwork/chatwork_error"
-
 class User < ApplicationRecord
   include User::ApiModule
   include User::ReminderModule
