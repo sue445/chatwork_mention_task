@@ -186,6 +186,8 @@ GEM
       byebug (~> 9.1)
       pry (~> 0.10)
     puma (3.11.0)
+    puma-heroku (1.0.0)
+      puma (~> 3.0)
     rack (2.0.3)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -329,6 +331,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pry-byebug
   puma
+  puma-heroku
   rails (~> 5.2.0.beta2)
   rollbar
   rspec-its
