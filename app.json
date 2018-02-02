@@ -19,7 +19,7 @@
     "CHATWORK_CLIENT_SECRET": {
       "description": "Client Secret of ChatWork OAuth Client"
     },
-    "RAILS_MAX_THREADS": {
+    "MAX_THREADS": {
       "description": "puma threads count",
       "value": "5",
       "required": false
