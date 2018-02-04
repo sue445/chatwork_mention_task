@@ -21,7 +21,7 @@ gem "jquery-rails"
 gem "komachi_heartbeat", github: "sue445/komachi_heartbeat", branch: "redis_to_development_dependency", ref: "c66036d" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "omniauth-chatwork"
-gem "pg", "~> 0.18"
+gem "pg"
 gem "puma"
 gem "puma-heroku"
 gem "rollbar"
