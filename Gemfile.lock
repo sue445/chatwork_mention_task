@@ -316,7 +316,7 @@ DEPENDENCIES
   chatwork_webhook_verify
   connection_pool
   dalli
-  dotenv-rails
+  dotenv-rails (>= 2.2.1)
   enum_help
   factory_bot_rails
   faker
