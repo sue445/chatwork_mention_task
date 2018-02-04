@@ -35,7 +35,7 @@ group :development do
   # TODO: Upgrade to v2.7.3+
   gem "annotate", github: "ctran/annotate_models", branch: "develop"
 
-  gem "dotenv-rails"
+  gem "dotenv-rails", ">= 2.2.1"
   gem "foreman", require: false
   gem "index_shotgun", group: :test
   gem "listen"
