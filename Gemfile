@@ -8,7 +8,7 @@ gem "rails", "5.2.0.rc1"
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
 gem "bootstrap"
-gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master"
+gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master", ref: "8a7188f"
 gem "chatwork"
 gem "chatwork_webhook_verify"
 gem "connection_pool"
@@ -18,7 +18,7 @@ gem "font-awesome-rails"
 gem "global"
 gem "jbuilder"
 gem "jquery-rails"
-gem "komachi_heartbeat", github: "sue445/komachi_heartbeat", branch: "redis_to_development_dependency" # TODO: Use gemified version
+gem "komachi_heartbeat", github: "sue445/komachi_heartbeat", branch: "redis_to_development_dependency", ref: "c66036d" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "omniauth-chatwork"
 gem "pg", "~> 0.18"
@@ -33,7 +33,7 @@ gem "uglifier"
 group :development do
   # annotate v2.7.2 + rails v5.2.0.beta2 doesn't work, but fixed at develop
   # TODO: Upgrade to v2.7.3+
-  gem "annotate", github: "ctran/annotate_models", branch: "develop"
+  gem "annotate", github: "ctran/annotate_models", branch: "develop", ref: "e3e0bbe"
 
   gem "dotenv-rails", ">= 2.2.1"
   gem "foreman", require: false
