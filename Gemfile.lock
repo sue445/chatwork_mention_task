@@ -336,7 +336,7 @@ DEPENDENCIES
   pry-byebug
   puma
   puma-heroku
-  rails (~> 5.2.0.rc1)
+  rails (= 5.2.0.rc1)
   rollbar
   rspec-its
   rspec-rails
