@@ -6,6 +6,8 @@ module User::ReminderModule
       where(refresh_token_reminded_at: nil).
         where("refresh_token_expires_at < ?", User::REFRESH_TOKEN_EXPIRES_REMIND.from_now)
     end
+
+    include Rails.application.routes.url_helpers
   end
 
   class_methods do
@@ -21,7 +23,7 @@ module User::ReminderModule
       [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
       Please sign in again so far.
 
-      #{Global.app.root_url}/auth/sign_in[/info]
+      #{sign_in_auth_index_url(host: Global.app.host)}[/info]
     MSG
 
     create_my_task(body, limit_at: refresh_token_expires_at)

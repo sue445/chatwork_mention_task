@@ -1,9 +1,9 @@
 default:
-  root_url: "https://localhost"
+  host: "https://localhost"
 
   verify_signature: false
 
 production:
-  root_url: "https://<%= ENV['HEROKU_APP_NAME'] %>.herokuapp.com"
+  host: "https://<%= ENV['HEROKU_APP_NAME'] %>.herokuapp.com"
 
   verify_signature: true
