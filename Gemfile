@@ -8,7 +8,7 @@ gem "rails", "5.2.0.rc1"
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
 gem "bootstrap"
-gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master", ref: "8a7188f"
+gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master", ref: "8a7188f" # TODO: Use gemified version
 gem "chatwork"
 gem "chatwork_webhook_verify"
 gem "connection_pool"
@@ -18,7 +18,7 @@ gem "font-awesome-rails"
 gem "global"
 gem "jbuilder"
 gem "jquery-rails"
-gem "komachi_heartbeat", github: "sue445/komachi_heartbeat", branch: "redis_to_development_dependency", ref: "c66036d" # TODO: Use gemified version
+gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "omniauth-chatwork"
 gem "pg"
