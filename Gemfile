@@ -18,7 +18,7 @@ gem "font-awesome-rails"
 gem "global"
 gem "jbuilder"
 gem "jquery-rails"
-gem "komachi_heartbeat", github: "sue445/komachi_heartbeat", branch: "redis_to_development_dependency", ref: "c66036d" # TODO: Use gemified version
+gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "omniauth-chatwork"
 gem "pg"

@@ -18,10 +18,10 @@ GIT
       rake (>= 10.4, < 13.0)
 
 GIT
-  remote: https://github.com/sue445/komachi_heartbeat.git
-  revision: c66036d869567a5ce67367299bbe89ba78c7765b
-  ref: c66036d
-  branch: redis_to_development_dependency
+  remote: https://github.com/mitaku/komachi_heartbeat.git
+  revision: cd043934cb92702f8cccea164d576cc675dd1e33
+  ref: cd04393
+  branch: master
   specs:
     komachi_heartbeat (2.5.0)
       rails (>= 4.1.0)
