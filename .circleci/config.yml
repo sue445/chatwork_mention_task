@@ -42,7 +42,7 @@ jobs:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           <<: *restore_bundle_cache_option
-      - run: ./.circleci/bundle_install.sh
+      - run: ./.circleci/setup_bundle.sh
       - save_cache:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
@@ -57,7 +57,7 @@ jobs:
       - restore_cache:
           <<: *restore_bundle_cache_option
 
-      - run: ./.circleci/bundle_install.sh
+      - run: ./.circleci/setup_bundle.sh
       - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
@@ -71,7 +71,7 @@ jobs:
       - restore_cache:
           <<: *restore_bundle_cache_option
 
-      - run: ./.circleci/bundle_install.sh
+      - run: ./.circleci/setup_bundle.sh
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
@@ -85,7 +85,7 @@ jobs:
       - restore_cache:
           <<: *restore_bundle_cache_option
 
-      - run: ./.circleci/bundle_install.sh
+      - run: ./.circleci/setup_bundle.sh
 
       - run: bundle exec rubocop
 
