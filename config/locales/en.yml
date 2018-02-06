@@ -33,5 +33,5 @@ en:
   enums:
     user:
       account_type:
-        chatwork_com: "ChatWork"
+        chatwork_com: "ChatWork.com"
         kddi_chatwork: "KDDI ChatWork"
