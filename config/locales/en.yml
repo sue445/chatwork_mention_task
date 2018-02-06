@@ -30,6 +30,49 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  app:
+    title:    "ChatWorkMentionTask"
+    sign_in:  "Sign in with ChatWork"
+    sign_out: "Sign out"
+
+  views:
+    form:
+      edit:   "Edit"
+      cancel: "Cancel"
+
+    me:
+      show:
+        title: "Settings"
+
+      edit:
+        title: "Edit"
+        webhook_token:
+          description: "You must create your webhook and register a token here."
+          step: "Step"
+          step1_html: |-
+            If you are a <a href="https://www.chatwork.com/">ChatWork.com</a> user,
+            go to <a href="https://www.chatwork.com/service/packages/chatwork/subpackages/webhook/list.php">here</a>.
+            Or you are a <a href="https://kcw.kddi.ne.jp/">KDDI ChatWork</a> user,
+            go to <a href="https://kcw.kddi.ne.jp/service/packages/chatwork/subpackages/webhook/list.php">here</a>.
+          step2: 'Go to "Create New"'
+          step3:
+            description:      "Create new webhook"
+            webhook_url_html: "Webhook URL: <code>%{webhook_url}</code>"
+            event:            "Event: Account Event"
+          step4_html: "Copy and paste a <code>token</code>"
+
+  activerecord:
+    models:
+      user: User
+
+    attributes:
+      user:
+        account_id:               "Account ID"
+        account_type:             "Account Type"
+        room_id:                  "Room to notify"
+        webhook_token:            "Webhook token"
+        refresh_token_expires_at: "Expires at for refresh token"
+
   enums:
     user:
       account_type:

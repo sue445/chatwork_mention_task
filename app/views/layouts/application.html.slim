@@ -5,7 +5,7 @@ html lang="en"
     meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" /
     meta content="" name="description" /
     meta content="" name="author" /
-    title = content_for?(:title) ? "#{yield :title} | ChatworkMentionTask" : "ChatworkMentionTask"
+    title = page_title
 
     = csrf_meta_tags
     = stylesheet_link_tag "application", 'data-turbolinks-track': "reload"
@@ -13,7 +13,7 @@ html lang="en"
 
   body
     nav.navbar.navbar-expand-md.navbar-dark.bg-primary.fixed-top
-      a.navbar-brand href="/" ChatworkMentionTask
+      a.navbar-brand href="/" = t("app.title")
 
       button.navbar-toggler aria-expanded="false" aria-label=("Toggle navigation") aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
         span.navbar-toggler-icon
@@ -29,10 +29,10 @@ html lang="en"
                 = current_user.name
               .dropdown-menu aria-labelledby="navbarDropdown"
                 a.dropdown-item href=me_path
-                  = fa_icon "cog", text: "Settings"
+                  = fa_icon "cog", text: t("views.me.show.title")
                 .dropdown-divider
                 a.dropdown-item href=sign_out_auth_index_path
-                  = fa_icon "sign-out", text: "Sign out"
+                  = fa_icon "sign-out", text: t("app.sign_out")
 
     .container-fluid
       = render partial: "shared/alert"

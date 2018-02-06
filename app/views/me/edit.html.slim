@@ -1,40 +1,29 @@
-h1 Edit
+- content_for :title, t("views.me.edit.title")
+
+h1 = t("views.me.edit.title")
 
 = bootstrap_form_for(@user, url: me_path, method: :put) do |f|
   = f.collection_radio_buttons :account_type, User.account_types_i18n, :first, :last
 
-  = f.collection_select :room_id, @rooms, :room_id, :name, label: "Room to notify", selected: current_user.room_id
+  = f.collection_select :room_id, @rooms, :room_id, :name, selected: current_user.room_id
 
   = f.text_field :webhook_token, required: true
 
   .alert.alert-info role="alert"
-    p You must create your webhook and register a token here.
+    p = t("views.me.edit.webhook_token.description")
 
-    h2 Step
+    h2 = t("views.me.edit.webhook_token.step")
     ol
+      li = t("views.me.edit.webhook_token.step1_html")
+      li = t("views.me.edit.webhook_token.step2")
       li
-        | If you are a&nbsp;
-        = link_to "ChatWork", "https://www.chatwork.com/"
-        | &nbsp;user, go to&nbsp;
-        = link_to "here", "https://www.chatwork.com/service/packages/chatwork/subpackages/webhook/list.php"
-        | . Or you are a&nbsp;
-        = link_to "KDDI ChatWork", "https://kcw.kddi.ne.jp/"
-        | &nbsp;user, go to&nbsp;
-        = link_to "here", "https://kcw.kddi.ne.jp/service/packages/chatwork/subpackages/webhook/list.php"
-        | .
-      li Go to "Create New"
-      li
-        | Create new webhook
+        = t("views.me.edit.webhook_token.step3.description")
         ul
-          li
-            | Webhook URL:
-            code< = account_webhook_index_url(account_id: @user.account_id)
-          li Event: Account Event
-      li
-        | Copy and paste a
-        code< token
+          li = t("views.me.edit.webhook_token.step3.webhook_url_html", webhook_url: account_webhook_index_url(account_id: @user.account_id))
+          li = t("views.me.edit.webhook_token.step3.event")
+      li = t("views.me.edit.webhook_token.step4_html")
 
   a.btn.btn-secondary role="button" href=me_path
-    | Cancel
+    = t("views.form.cancel")
 
-  = f.primary
+  = f.primary t("helpers.submit.update", model: "")
