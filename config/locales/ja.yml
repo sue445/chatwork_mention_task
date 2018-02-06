@@ -3,6 +3,7 @@ ja:
     title:    "ChatWorkMentionTask"
     sign_in:  "ChatWorkアカウントでサインイン"
     sign_out: "サインアウト"
+    my_chat:  "マイチャット"
 
   views:
     form:
