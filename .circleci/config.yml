@@ -18,6 +18,11 @@ default: &default
     - image: memcached:1.5-alpine
   working_directory: ~/app
 
+restore_bundle_cache_option: &restore_bundle_cache_option
+  keys:
+    - v1-bundle-{{ checksum "Gemfile.lock" }}
+    - v1-bundle
+
 jobs:
   checkout_code:
     <<: *default
@@ -36,12 +41,10 @@ jobs:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          keys:
-            - v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
-            - v1-bundle-master
+          <<: *restore_bundle_cache_option
       - run: ./.circleci/bundle_install.sh
       - save_cache:
-          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/app/vendor/bundle
 
@@ -52,7 +55,7 @@ jobs:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+          <<: *restore_bundle_cache_option
 
       - run: ./.circleci/bundle_install.sh
       - run: ./.circleci/setup_database.sh
@@ -66,7 +69,7 @@ jobs:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+          <<: *restore_bundle_cache_option
 
       - run: ./.circleci/bundle_install.sh
       - run: ./.circleci/setup_database.sh
@@ -80,7 +83,8 @@ jobs:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: v1-bundle-{{ .Environment.CIRCLE_BRANCH }}
+          <<: *restore_bundle_cache_option
+
       - run: ./.circleci/bundle_install.sh
 
       - run: bundle exec rubocop
