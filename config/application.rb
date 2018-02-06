@@ -30,6 +30,9 @@ module ChatworkMentionTask
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.i18n.available_locales = %w[en ja]
+    config.i18n.fallbacks = [:en]
+
     Global.configure do |config|
       config.environment = Rails.env.to_s
       config.config_directory = Rails.root.join("config/global").to_s

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include HttpAcceptLanguage::AutoLocale
+
   helper_method :current_user, :signed_in?
 
   private
