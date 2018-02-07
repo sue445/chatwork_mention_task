@@ -20,6 +20,7 @@
 # **`webhook_token`**              | `string`           |
 # **`account_type`**               | `integer`          | `default("chatwork_com"), not null`
 # **`refresh_token_reminded_at`**  | `datetime`         |
+# **`locale`**                     | `string`           | `default("en"), not null`
 #
 # ### Indexes
 #
