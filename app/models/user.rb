@@ -43,9 +43,14 @@ class User < ApplicationRecord
 
   enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }
 
-  def self.register(auth_hash)
+  # @param auth_hash [Hash]
+  # @param locale [Symbol]
+  #
+  # @return [User]
+  def self.register(auth_hash, locale)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
       u.room_id = auth_hash[:extra][:raw_info][:room_id]
+      u.locale = locale
     end
     user.name                    = auth_hash[:info][:name]
     user.avatar_image_url        = auth_hash[:info][:image]
