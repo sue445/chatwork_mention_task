@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
-      I18n.locale = compatible_locale
+      I18n.locale = current_user&.locale || compatible_locale
     end
 
     def compatible_locale
