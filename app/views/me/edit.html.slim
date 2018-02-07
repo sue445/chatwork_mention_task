@@ -7,6 +7,8 @@ h1 = t("views.me.edit.title")
 
   = f.collection_select :locale, translated_available_locales, :first, :last, selected: @user.locale
 
+  = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones
+
   = f.collection_select :room_id, @rooms, :room_id, :name, selected: @user.room_id
 
   = f.text_field :webhook_token, required: true

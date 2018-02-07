@@ -24,7 +24,7 @@ class MeController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:room_id, :webhook_token, :account_type, :locale)
+      params.require(:user).permit(:room_id, :webhook_token, :account_type, :locale, :time_zone)
     end
 
     def translated_locale(locale)

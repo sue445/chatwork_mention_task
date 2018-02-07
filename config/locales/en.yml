@@ -74,6 +74,7 @@ en:
         webhook_token:            "Webhook token"
         refresh_token_expires_at: "Expires at for refresh token"
         locale:                   "Locale"
+        time_zone:                "TimeZone"
 
     user:
       remind_task:
