@@ -56,6 +56,7 @@ class User < ApplicationRecord
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
       u.room_id = auth_hash[:extra][:raw_info][:room_id]
       u.locale = locale
+      u.time_zone = time_zone_from_locale(locale)
     end
     user.name                    = auth_hash[:info][:name]
     user.avatar_image_url        = auth_hash[:info][:image]
