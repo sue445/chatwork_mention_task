@@ -53,12 +53,13 @@ RSpec.describe User::ReminderModule, type: :model do
   describe "#remind_message" do
     subject { user.remind_message }
 
-    let(:user) { create(:user, locale: locale, refresh_token_expires_at: refresh_token_expires_at) }
+    let(:user) { create(:user, locale: locale, time_zone: time_zone, refresh_token_expires_at: refresh_token_expires_at) }
     let(:refresh_token_expires_at)      { "2018-02-01 12:34:56".in_time_zone }
     let(:refresh_token_expires_at_i18n) { "Thu, 01 Feb 2018 12:34:56 +0000" }
 
     context "with en" do
-      let(:locale) { "en" }
+      let(:locale)    { "en" }
+      let(:time_zone) { "UTC" }
 
       let(:message) do
         <<~MSG.strip
@@ -73,11 +74,12 @@ RSpec.describe User::ReminderModule, type: :model do
     end
 
     context "with ja" do
-      let(:locale) { "ja" }
+      let(:locale)    { "ja" }
+      let(:time_zone) { "Tokyo" }
 
       let(:message) do
         <<~MSG.strip
-          [info][title](F)from ChatworkMentionTask(F)[/title]あなたのリフレッシュトークンは2018/02/01 12:34:56頃に切れます。
+          [info][title](F)from ChatworkMentionTask(F)[/title]あなたのリフレッシュトークンは2018/02/01 21:34:56頃に切れます。
           それまでにもう一度ログインしてください。
 
           #{Global.app.host}/auth/sign_in[/info]

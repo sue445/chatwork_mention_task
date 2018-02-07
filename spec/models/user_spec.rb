@@ -62,6 +62,7 @@ RSpec.describe User, type: :model do
       its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
       its(:refresh_token_reminded_at) { should eq nil }
       its(:locale)                    { should eq "ja" }
+      its(:time_zone)                 { should eq "Tokyo" }
     end
 
     context "when user is registered" do
@@ -95,6 +96,7 @@ RSpec.describe User, type: :model do
         its(:refresh_token_expires_at)  { should match_unixtime(refresh_token_expires_at) }
         its(:refresh_token_reminded_at) { should eq refresh_token_reminded_at }
         its(:locale)                    { should eq "en" }
+        its(:time_zone)                 { should eq "UTC" }
       end
 
       context "when refresh token is updated" do
@@ -112,7 +114,24 @@ RSpec.describe User, type: :model do
         its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
         its(:refresh_token_reminded_at) { should eq nil }
         its(:locale)                    { should eq "en" }
+        its(:time_zone)                 { should eq "UTC" }
       end
+    end
+  end
+
+  describe ".time_zone_from_locale" do
+    subject { User.time_zone_from_locale(locale) }
+
+    context "when ja" do
+      let(:locale) { :ja }
+
+      it { should eq "Tokyo" }
+    end
+
+    context "when other" do
+      let(:locale) { :unknown }
+
+      it { should eq "UTC" }
     end
   end
 end

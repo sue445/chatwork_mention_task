@@ -29,6 +29,7 @@ RSpec.describe MeController, :logged_in, type: :controller do
           webhook_token: webhook_token,
           account_type:  account_type,
           locale:        locale,
+          time_zone:     time_zone,
         },
       }
     end
@@ -37,6 +38,7 @@ RSpec.describe MeController, :logged_in, type: :controller do
     let(:webhook_token) { "token" }
     let(:account_type)  { "kddi_chatwork" }
     let(:locale)        { "ja" }
+    let(:time_zone)     { "Tokyo" }
 
     it { should redirect_to me_path }
 
@@ -44,5 +46,6 @@ RSpec.describe MeController, :logged_in, type: :controller do
     it { expect { subject }.to change { current_user.webhook_token }.to(webhook_token) }
     it { expect { subject }.to change { current_user.account_type }.to(account_type) }
     it { expect { subject }.to change { current_user.locale }.to(locale) }
+    it { expect { subject }.to change { current_user.time_zone }.to(time_zone) }
   end
 end

@@ -29,15 +29,17 @@ module User::ReminderModule
 
   # @return [String]
   def remind_message
-    I18n.with_locale(locale) do
-      title = I18n.t("activerecord.user.remind_task.title")
-      message = I18n.t(
-        "activerecord.user.remind_task.message",
-        expires_at:  I18n.l(refresh_token_expires_at),
-        sign_in_url: sign_in_auth_index_url(host: Global.app.host),
-      )
+    Time.use_zone(time_zone) do
+      I18n.with_locale(locale) do
+        title = I18n.t("activerecord.user.remind_task.title")
+        message = I18n.t(
+          "activerecord.user.remind_task.message",
+          expires_at:  I18n.l(refresh_token_expires_at),
+          sign_in_url: sign_in_auth_index_url(host: Global.app.host),
+        )
 
-      "[info][title](F)#{title}(F)[/title]#{message}[/info]"
+        "[info][title](F)#{title}(F)[/title]#{message}[/info]"
+      end
     end
   end
 end

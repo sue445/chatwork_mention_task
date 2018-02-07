@@ -21,6 +21,7 @@
 # **`account_type`**               | `integer`          | `default("chatwork_com"), not null`
 # **`refresh_token_reminded_at`**  | `datetime`         |
 # **`locale`**                     | `string`           | `default("en"), not null`
+# **`time_zone`**                  | `string`           | `default("UTC"), not null`
 #
 # ### Indexes
 #
@@ -39,6 +40,10 @@ class User < ApplicationRecord
 
   REFRESH_TOKEN_EXPIRES_REMIND = 3.days
 
+  LOCALE_TIME_ZONES = {
+    ja: "Tokyo",
+  }.freeze
+
   auto_strip_attributes :webhook_token
 
   enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }
@@ -49,8 +54,9 @@ class User < ApplicationRecord
   # @return [User]
   def self.register(auth_hash, locale)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
-      u.room_id = auth_hash[:extra][:raw_info][:room_id]
-      u.locale = locale
+      u.room_id   = auth_hash[:extra][:raw_info][:room_id]
+      u.locale    = locale
+      u.time_zone = time_zone_from_locale(locale)
     end
     user.name                    = auth_hash[:info][:name]
     user.avatar_image_url        = auth_hash[:info][:image]
@@ -66,5 +72,12 @@ class User < ApplicationRecord
     user.save!
 
     user
+  end
+
+  # @param locale [Symbol]
+  #
+  # @return [String]
+  def self.time_zone_from_locale(locale)
+    LOCALE_TIME_ZONES[locale] || "UTC"
   end
 end
