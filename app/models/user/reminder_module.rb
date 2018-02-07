@@ -19,7 +19,17 @@ module User::ReminderModule
   end
 
   def create_remind_task
-    body = I18n.with_locale(locale) do
+    create_my_task(remind_message, limit_at: refresh_token_expires_at)
+
+    self.refresh_token_reminded_at = Time.current
+    save!
+
+    Rails.logger.info "[User#create_remind_task] Notified remind to account_id=#{account_id}"
+  end
+
+  # @return [String]
+  def remind_message
+    I18n.with_locale(locale) do
       title = I18n.t("activerecord.user.remind_task.title")
       message = I18n.t(
         "activerecord.user.remind_task.message",
@@ -29,12 +39,5 @@ module User::ReminderModule
 
       "[info][title](F)#{title}(F)[/title]#{message}[/info]"
     end
-
-    create_my_task(body, limit_at: refresh_token_expires_at)
-
-    self.refresh_token_reminded_at = Time.current
-    save!
-
-    Rails.logger.info "[User#create_remind_task] Notified remind to account_id=#{account_id}"
   end
 end
