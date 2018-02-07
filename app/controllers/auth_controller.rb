@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
   def callback
-    user = User.register(auth_hash)
+    user = User.register(auth_hash, compatible_locale)
     session[:user_id] = user.id
 
     redirect_to me_path

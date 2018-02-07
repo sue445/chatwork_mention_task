@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include HttpAcceptLanguage::AutoLocale
+  before_action :set_locale
 
   helper_method :current_user, :signed_in?
 
@@ -15,5 +15,13 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
       redirect_to root_path unless signed_in?
+    end
+
+    def set_locale
+      I18n.locale = compatible_locale
+    end
+
+    def compatible_locale
+      http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
     end
 end
