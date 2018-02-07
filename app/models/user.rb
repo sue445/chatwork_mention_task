@@ -40,6 +40,10 @@ class User < ApplicationRecord
 
   REFRESH_TOKEN_EXPIRES_REMIND = 3.days
 
+  LOCALE_TIME_ZONES = {
+    ja: "Tokyo",
+  }.freeze
+
   auto_strip_attributes :webhook_token
 
   enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }
@@ -67,5 +71,12 @@ class User < ApplicationRecord
     user.save!
 
     user
+  end
+
+  # @param locale [Symbol]
+  #
+  # @return [String]
+  def self.time_zone_from_locale(locale)
+    LOCALE_TIME_ZONES[locale] || "UTC"
   end
 end

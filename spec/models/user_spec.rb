@@ -115,4 +115,20 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".time_zone_from_locale" do
+    subject { User.time_zone_from_locale(locale) }
+
+    context "when ja" do
+      let(:locale) { :ja }
+
+      it { should eq "Tokyo" }
+    end
+
+    context "when other" do
+      let(:locale) { :unknown }
+
+      it { should eq "UTC" }
+    end
+  end
 end
