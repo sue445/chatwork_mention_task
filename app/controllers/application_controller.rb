@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
 
+  around_action :with_user_time_zone, if: :signed_in?
+
   helper_method :current_user, :signed_in?
 
   private
@@ -15,6 +17,10 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
       redirect_to root_path unless signed_in?
+    end
+
+    def with_user_time_zone(&block)
+      Time.use_zone(current_user.time_zone, &block)
     end
 
     def set_locale
