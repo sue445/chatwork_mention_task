@@ -36,6 +36,7 @@ RSpec.describe User::ReminderModule, type: :model do
 
     let(:user) { create(:user, refresh_token_expires_at: refresh_token_expires_at) }
     let(:refresh_token_expires_at) { "2018-02-01 12:34:56".in_time_zone }
+    let(:refresh_token_expires_at_i18n) { "Thu, 01 Feb 2018 12:34:56 +0000" }
 
     before do
       allow(user).to receive(:create_my_task)
@@ -44,8 +45,8 @@ RSpec.describe User::ReminderModule, type: :model do
     it "called create_my_task with limit_at" do
       subject
 
-      body = <<~MSG
-        [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
+      body = <<~MSG.strip
+        [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at_i18n}.
         Please sign in again so far.
 
         #{Global.app.host}/auth/sign_in[/info]

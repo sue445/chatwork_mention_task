@@ -44,6 +44,15 @@ ja:
         refresh_token_expires_at: "リフレッシュトークンの有効期限"
         locale:                   "言語"
 
+    user:
+      remind_task:
+        title: "from ChatworkMentionTask"
+        message: |-
+          あなたのリフレッシュトークンは%{expires_at}頃に切れます。
+          それまでにもう一度ログインしてください。
+
+          %{sign_in_url}
+
   enums:
     user:
       account_type:
