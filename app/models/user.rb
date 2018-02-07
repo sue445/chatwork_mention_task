@@ -54,8 +54,8 @@ class User < ApplicationRecord
   # @return [User]
   def self.register(auth_hash, locale)
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
-      u.room_id = auth_hash[:extra][:raw_info][:room_id]
-      u.locale = locale
+      u.room_id   = auth_hash[:extra][:raw_info][:room_id]
+      u.locale    = locale
       u.time_zone = time_zone_from_locale(locale)
     end
     user.name                    = auth_hash[:info][:name]
