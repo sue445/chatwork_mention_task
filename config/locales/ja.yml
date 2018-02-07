@@ -42,6 +42,7 @@ ja:
         room_id:                  "通知先の部屋"
         webhook_token:            "Webhookトークン"
         refresh_token_expires_at: "リフレッシュトークンの有効期限"
+        locale:                   "言語"
 
   enums:
     user:

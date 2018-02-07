@@ -9,6 +9,9 @@ dl
   dt = t("activerecord.attributes.user.account_type")
   dd = @user.account_type_i18n
 
+  dt = t("activerecord.attributes.user.locale")
+  dd = translated_locale(@user.locale)
+
   dt = t("activerecord.attributes.user.room_id")
   dd = @user.room_name
 
