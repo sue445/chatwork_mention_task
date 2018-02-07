@@ -1,7 +1,8 @@
 class MeController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_user
+
+  helper_method :translated_locale, :translated_available_locales
 
   def show
   end
@@ -23,6 +24,14 @@ class MeController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:room_id, :webhook_token, :account_type)
+      params.require(:user).permit(:room_id, :webhook_token, :account_type, :locale)
+    end
+
+    def translated_locale(locale)
+      Global.translation.locales[locale]
+    end
+
+    def translated_available_locales
+      I18n.available_locales.map { |locale| [locale, translated_locale(locale)] }.to_h
     end
 end

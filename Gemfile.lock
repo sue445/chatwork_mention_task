@@ -126,6 +126,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
+    http_accept_language (2.1.1)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     index_shotgun (0.3.0)
@@ -216,6 +217,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.4)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     railties (5.2.0.rc1)
       actionpack (= 5.2.0.rc1)
       activesupport (= 5.2.0.rc1)
@@ -327,6 +331,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   global
+  http_accept_language
   index_shotgun
   jbuilder
   jquery-rails
@@ -340,6 +345,7 @@ DEPENDENCIES
   puma
   puma-heroku
   rails (= 5.2.0.rc1)
+  rails-i18n
   rollbar
   rspec-its
   rspec-rails

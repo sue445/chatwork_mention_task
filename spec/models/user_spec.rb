@@ -1,6 +1,6 @@
 RSpec.describe User, type: :model do
   describe ".register", :time_stop do
-    subject { User.register(auth_hash) }
+    subject { User.register(auth_hash, locale) }
 
     let(:auth_hash) do
       {
@@ -47,6 +47,8 @@ RSpec.describe User, type: :model do
       }
     end
 
+    let(:locale) { :ja }
+
     context "when user is not registered" do
       it { expect { subject }.to change { User.count }.by(1) }
 
@@ -59,6 +61,7 @@ RSpec.describe User, type: :model do
       its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
       its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
       its(:refresh_token_reminded_at) { should eq nil }
+      its(:locale)                    { should eq "ja" }
     end
 
     context "when user is registered" do
@@ -91,6 +94,7 @@ RSpec.describe User, type: :model do
         its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
         its(:refresh_token_expires_at)  { should match_unixtime(refresh_token_expires_at) }
         its(:refresh_token_reminded_at) { should eq refresh_token_reminded_at }
+        its(:locale)                    { should eq "en" }
       end
 
       context "when refresh token is updated" do
@@ -107,6 +111,7 @@ RSpec.describe User, type: :model do
         its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
         its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
         its(:refresh_token_reminded_at) { should eq nil }
+        its(:locale)                    { should eq "en" }
       end
     end
   end

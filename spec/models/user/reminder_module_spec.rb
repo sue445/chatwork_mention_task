@@ -44,15 +44,47 @@ RSpec.describe User::ReminderModule, type: :model do
     it "called create_my_task with limit_at" do
       subject
 
-      body = <<~MSG
-        [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
-        Please sign in again so far.
-
-        #{Global.app.host}/auth/sign_in[/info]
-      MSG
-      expect(user).to have_received(:create_my_task).with(body, limit_at: refresh_token_expires_at)
+      expect(user).to have_received(:create_my_task).with(kind_of(String), limit_at: refresh_token_expires_at)
     end
 
     it { expect { subject }.to change { user.refresh_token_reminded_at }.to(Time.current) }
+  end
+
+  describe "#remind_message" do
+    subject { user.remind_message }
+
+    let(:user) { create(:user, locale: locale, refresh_token_expires_at: refresh_token_expires_at) }
+    let(:refresh_token_expires_at)      { "2018-02-01 12:34:56".in_time_zone }
+    let(:refresh_token_expires_at_i18n) { "Thu, 01 Feb 2018 12:34:56 +0000" }
+
+    context "with en" do
+      let(:locale) { "en" }
+
+      let(:message) do
+        <<~MSG.strip
+          [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at_i18n}.
+          Please sign in again so far.
+
+          #{Global.app.host}/auth/sign_in[/info]
+        MSG
+      end
+
+      it { should eq message }
+    end
+
+    context "with ja" do
+      let(:locale) { "ja" }
+
+      let(:message) do
+        <<~MSG.strip
+          [info][title](F)from ChatworkMentionTask(F)[/title]あなたのリフレッシュトークンは2018/02/01 12:34:56頃に切れます。
+          それまでにもう一度ログインしてください。
+
+          #{Global.app.host}/auth/sign_in[/info]
+        MSG
+      end
+
+      it { should eq message }
+    end
   end
 end

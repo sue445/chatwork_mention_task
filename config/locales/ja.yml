@@ -1,0 +1,60 @@
+ja:
+  app:
+    title:    "ChatWorkMentionTask"
+    sign_in:  "ChatWorkアカウントでサインイン"
+    sign_out: "サインアウト"
+    my_chat:  "マイチャット"
+
+  views:
+    form:
+      edit:   "編集"
+      cancel: "キャンセル"
+
+    me:
+      show:
+        title: "設定"
+
+      edit:
+        title: "編集"
+        webhook_token:
+          description: "Webhookを作成し、ここに登録する必要があります"
+          step: "手順"
+          step1_html: |-
+            もし <a href="https://www.chatwork.com/">ChatWork.com</a> ユーザーなら
+            <a href="https://www.chatwork.com/service/packages/chatwork/subpackages/webhook/list.php">ここ</a> へ行ってください。
+            また <a href="https://kcw.kddi.ne.jp/">KDDI ChatWork</a> ユーザーなら
+            <a href="https://kcw.kddi.ne.jp/service/packages/chatwork/subpackages/webhook/list.php">ここ</a> へ行ってください。
+          step2: "「新規作成」をクリック"
+          step3:
+            description:      "Webhookを作成してください"
+            webhook_url_html: "Webhook URL: <code>%{webhook_url}</code>"
+            event:            "イベント: アカウントイベント"
+          step4_html: "トークンをコピー＆ペーストしてください"
+
+  activerecord:
+    models:
+      user: User
+
+    attributes:
+      user:
+        account_id:               "アカウントID"
+        account_type:             "アカウントタイプ"
+        room_id:                  "通知先の部屋"
+        webhook_token:            "Webhookトークン"
+        refresh_token_expires_at: "リフレッシュトークンの有効期限"
+        locale:                   "言語"
+
+    user:
+      remind_task:
+        title: "from ChatworkMentionTask"
+        message: |-
+          あなたのリフレッシュトークンは%{expires_at}頃に切れます。
+          それまでにもう一度ログインしてください。
+
+          %{sign_in_url}
+
+  enums:
+    user:
+      account_type:
+        chatwork_com: "ChatWork.com"
+        kddi_chatwork: "KDDI ChatWork"

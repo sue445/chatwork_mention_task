@@ -14,7 +14,7 @@ module User::ApiModule
       ChatWork::Room.find(room_id: room_id)
     end
 
-    return "My Chat" if room.type == "my"
+    return I18n.t("app.my_chat") if room.type == "my"
     room.name
   end
 

@@ -1,20 +1,25 @@
-h1 Settings
+- content_for :title, t("views.me.show.title")
+
+h1 = t("views.me.show.title")
 
 dl
-  dt Account ID
+  dt = t("activerecord.attributes.user.account_id")
   dd = @user.account_id
 
-  dt Account Type
+  dt = t("activerecord.attributes.user.account_type")
   dd = @user.account_type_i18n
 
-  dt Room to notify
+  dt = t("activerecord.attributes.user.locale")
+  dd = translated_locale(@user.locale)
+
+  dt = t("activerecord.attributes.user.room_id")
   dd = @user.room_name
 
-  dt Webhook token
+  dt = t("activerecord.attributes.user.webhook_token")
   dd = @user.webhook_token
 
-  dt Expires at for refresh token
-  dd = @user.refresh_token_expires_at
+  dt = t("activerecord.attributes.user.refresh_token_expires_at")
+  dd = l(@user.refresh_token_expires_at)
 
 a.btn.btn-primary role="button" href=edit_me_path
-  = fa_icon "cog", text: "Edit"
+  = fa_icon "cog", text: t("views.form.edit")

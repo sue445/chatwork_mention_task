@@ -19,18 +19,25 @@ module User::ReminderModule
   end
 
   def create_remind_task
-    body = <<~MSG
-      [info][title](F)from ChatworkMentionTask(F)[/title]Your refresh token is due to expire around #{refresh_token_expires_at}.
-      Please sign in again so far.
-
-      #{sign_in_auth_index_url(host: Global.app.host)}[/info]
-    MSG
-
-    create_my_task(body, limit_at: refresh_token_expires_at)
+    create_my_task(remind_message, limit_at: refresh_token_expires_at)
 
     self.refresh_token_reminded_at = Time.current
     save!
 
     Rails.logger.info "[User#create_remind_task] Notified remind to account_id=#{account_id}"
+  end
+
+  # @return [String]
+  def remind_message
+    I18n.with_locale(locale) do
+      title = I18n.t("activerecord.user.remind_task.title")
+      message = I18n.t(
+        "activerecord.user.remind_task.message",
+        expires_at:  I18n.l(refresh_token_expires_at),
+        sign_in_url: sign_in_auth_index_url(host: Global.app.host),
+      )
+
+      "[info][title](F)#{title}(F)[/title]#{message}[/info]"
+    end
   end
 end
