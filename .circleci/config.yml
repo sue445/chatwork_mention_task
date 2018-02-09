@@ -92,7 +92,7 @@ jobs:
   deploy:
     docker:
       - image: sue445/heroku-cli
-    working_directory: ~/app
+    working_directory: /home/circleci/app
 
     steps:
       - restore_cache:
