@@ -90,7 +90,9 @@ jobs:
       - run: bundle exec rubocop
 
   deploy:
-    <<: *default
+    docker:
+      - image: sue445/heroku-cli
+    working_directory: ~/app
 
     steps:
       - restore_cache:
