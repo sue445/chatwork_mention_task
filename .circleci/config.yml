@@ -23,6 +23,9 @@ restore_bundle_cache_option: &restore_bundle_cache_option
     - v1-bundle-{{ checksum "Gemfile.lock" }}
     - v1-bundle
 
+restore_repo_cache_option: &restore_repo_cache_option
+  key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
 jobs:
   checkout_code:
     <<: *default
@@ -39,7 +42,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          <<: *restore_repo_cache_option
       - restore_cache:
           <<: *restore_bundle_cache_option
       - run: ./.circleci/setup_bundle.sh
@@ -53,7 +56,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          <<: *restore_repo_cache_option
       - restore_cache:
           <<: *restore_bundle_cache_option
 
@@ -67,7 +70,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          <<: *restore_repo_cache_option
       - restore_cache:
           <<: *restore_bundle_cache_option
 
@@ -81,7 +84,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          <<: *restore_repo_cache_option
       - restore_cache:
           <<: *restore_bundle_cache_option
 
