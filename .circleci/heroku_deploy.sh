@@ -2,6 +2,8 @@
 
 heroku config:add BUNDLE_WITHOUT="test:development" --app $HEROKU_APP_NAME
 
+sleep 10
+
 git push git@heroku.com:$HEROKU_APP_NAME.git $CIRCLE_SHA1:refs/heads/master
 
 heroku run rake db:migrate --app $HEROKU_APP_NAME
