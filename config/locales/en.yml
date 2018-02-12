@@ -41,6 +41,11 @@ en:
       edit:   "Edit"
       cancel: "Cancel"
 
+    home:
+      index:
+        about: |-
+          ChatWorkMentionTask can automatically task the mentions that came to you, easily look back on it later.
+
     me:
       show:
         title: "Settings"
