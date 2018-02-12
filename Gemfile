@@ -17,6 +17,7 @@ gem "enum_help"
 gem "font-awesome-rails"
 gem "global"
 gem "http_accept_language"
+gem "i18n-tasks"
 gem "jbuilder"
 gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
