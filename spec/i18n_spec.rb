@@ -2,6 +2,7 @@
 
 require "i18n/tasks"
 
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe "I18n" do
   let(:i18n) { I18n::Tasks::BaseTask.new }
   let(:missing_keys) { i18n.missing_keys }
@@ -12,3 +13,4 @@ RSpec.describe "I18n" do
                             "Missing #{missing_keys.leaves.count} i18n keys, run `i18n-tasks missing' to show them"
   end
 end
+# rubocop:enable RSpec/DescribeClass
