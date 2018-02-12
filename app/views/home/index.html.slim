@@ -1,3 +1,17 @@
-- unless signed_in?
-  a.btn.btn-primary role="button" href=sign_in_auth_index_path
-    = fa_icon "sign-in", text: t("app.sign_in")
+section.jumbotron.text-center
+  h1.jumbotron-heading = t("app.title")
+
+  p.lead = t("views.home.index.about")
+
+  div
+    = image_tag "about.png"
+
+- if signed_in?
+  div.text-center
+    a.btn.btn-primary role="button" href=me_path
+      = fa_icon "cog", text: t("views.me.show.title")
+
+- else
+  div.text-center
+    a.btn.btn-primary role="button" href=sign_in_auth_index_path
+      = fa_icon "sign-in", text: t("app.sign_in")

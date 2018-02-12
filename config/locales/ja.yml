@@ -10,6 +10,11 @@ ja:
       edit:   "編集"
       cancel: "キャンセル"
 
+    home:
+      index:
+        about: |-
+          ChatWorkMentionTaskは自分にきたメンションを自動的にタスク化し、後から容易に見返すことができます。
+
     me:
       show:
         title: "設定"
