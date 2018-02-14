@@ -40,10 +40,12 @@ html lang="en"
 
     footer.text-muted
       .container
-        p
-          | &copy;&nbsp;
-          a href="https://github.com/sue445" sue445
-          | &nbsp;2018-
-        p
-          | GitHub:&nbsp;
-          a href="https://github.com/sue445/chatwork_mention_task" https://github.com/sue445/chatwork_mention_task
+        ul.list-inline
+          li.list-inline-item
+            | &copy;&nbsp;
+            a href="https://github.com/sue445" sue445
+            | &nbsp;2018-
+
+          li.list-inline-item
+            a href="https://github.com/sue445/chatwork_mention_task"
+              = fa_icon "github", text: "Repo"
