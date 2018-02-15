@@ -23,6 +23,7 @@ gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "omniauth-chatwork"
+gem "omniauth-oauth2", ">= 1.5.0"
 gem "pg"
 gem "puma"
 gem "puma-heroku"
