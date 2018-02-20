@@ -7,8 +7,8 @@
 # Name                             | Type               | Attributes
 # -------------------------------- | ------------------ | ---------------------------
 # **`id`**                         | `bigint(8)`        | `not null, primary key`
-# **`account_id`**                 | `integer`          | `not null`
-# **`room_id`**                    | `integer`          | `not null`
+# **`account_id`**                 | `integer(4)`       | `not null`
+# **`room_id`**                    | `integer(4)`       | `not null`
 # **`name`**                       | `string`           | `not null`
 # **`avatar_image_url`**           | `string`           | `not null`
 # **`access_token`**               | `string`           | `not null`
@@ -18,7 +18,7 @@
 # **`created_at`**                 | `datetime`         | `not null`
 # **`updated_at`**                 | `datetime`         | `not null`
 # **`webhook_token`**              | `string`           |
-# **`account_type`**               | `integer`          | `default("chatwork_com"), not null`
+# **`account_type`**               | `integer(4)`       | `default("chatwork_com"), not null`
 # **`refresh_token_reminded_at`**  | `datetime`         |
 # **`locale`**                     | `string`           | `default("en"), not null`
 # **`time_zone`**                  | `string`           | `default("UTC"), not null`
