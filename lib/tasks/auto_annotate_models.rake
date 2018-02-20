@@ -34,7 +34,7 @@ if Rails.env.development?
       "ignore_columns"            => nil,
       "ignore_routes"             => nil,
       "ignore_unknown_models"     => "false",
-      "hide_limit_column_types"   => "integer,boolean",
+      "hide_limit_column_types"   => "boolean",
       "hide_default_column_types" => "json,jsonb,hstore",
       "skip_on_db_migrate"        => "false",
       "format_bare"               => "true",
