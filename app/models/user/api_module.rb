@@ -58,5 +58,12 @@ module User::ApiModule
       self.refresh_token = tokens[:refresh_token]
       self.access_token_expires_at = tokens[:expires_in].to_i.seconds.from_now
       save!
+
+    rescue ChatWork::AuthenticateError => error
+      if error.error == "invalid_grant" && error.error_description.match?(/Invalid refresh token/i)
+        raise User::RefreshTokenExpiredError
+      end
+
+      raise
     end
 end
