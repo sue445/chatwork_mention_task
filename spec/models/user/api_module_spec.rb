@@ -60,7 +60,6 @@ RSpec.describe User::ApiModule, type: :model do
         allow(oauth_client).to receive(:refresh_access_token) do
           raise ChatWork::AuthenticateError.new("invalid_grant Invalid refresh token.", 400, error_response, "invalid_grant", "Invalid refresh token.")
         end
-
       end
 
       let(:error_response) do
