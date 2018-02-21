@@ -44,6 +44,8 @@ class User < ApplicationRecord
     ja: "Tokyo",
   }.freeze
 
+  class RefreshTokenExpiredError < StandardError; end
+
   auto_strip_attributes :webhook_token
 
   enum account_type: { chatwork_com: 0, kddi_chatwork: 1 }

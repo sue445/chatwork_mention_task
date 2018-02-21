@@ -12,6 +12,9 @@ class WebhookController < ApplicationController
     @user.create_my_task(message)
 
     render plain: "OK", status: 200
+  rescue User::RefreshTokenExpiredError => error
+    Rollbar.error(error)
+    render plain: "refresh_token is expired", status: 200
   end
 
   # @params webhook_event [Hash]
