@@ -17,11 +17,13 @@ RSpec.describe User::ApiModule, type: :model do
         scope:         "users.all:read rooms.all:read_write contacts.all:read_write",
       }
     end
+    let(:oauth_client) { ChatWork::OAuthClient.new(client_id: "xxxx", client_secret: "xxxx") }
 
     before do
       @count = 0
 
-      allow(ChatWork::Token).to receive(:refresh_access_token) { tokens }
+      allow(user).to receive(:oauth_client) { oauth_client }
+      allow(oauth_client).to receive(:refresh_access_token) { tokens }
     end
 
     def call_api
@@ -44,7 +46,7 @@ RSpec.describe User::ApiModule, type: :model do
     it "call ChatWork::Token.refresh_access_token once" do
       subject
 
-      expect(ChatWork::Token).to have_received(:refresh_access_token).once
+      expect(oauth_client).to have_received(:refresh_access_token).once
     end
   end
 end

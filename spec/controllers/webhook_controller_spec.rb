@@ -3,10 +3,14 @@ RSpec.describe WebhookController, type: :controller do
     subject { post :account, params: params }
 
     before do
-      allow(ChatWork::Task).to receive(:create)
+      allow_any_instance_of(User).to receive(:api_client) { api_client } # rubocop:disable RSpec/AnyInstance
+
+      allow(api_client).to receive(:create_task)
     end
 
     let(:user) { create(:user) }
+
+    let(:api_client) { ChatWork::Client.new(api_key: "xxxx") }
 
     let(:params) do
       {
@@ -53,10 +57,10 @@ RSpec.describe WebhookController, type: :controller do
 
       it { should have_http_status 200 }
 
-      it "called ChatWork::Task.create" do
+      it "called ChatWork::Client#create_task" do
         subject
 
-        expect(ChatWork::Task).to have_received(:create).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id, limit: nil))
+        expect(api_client).to have_received(:create_task).with(hash_including(room_id: user.room_id, body: message, to_ids: user.account_id, limit: nil))
       end
     end
 

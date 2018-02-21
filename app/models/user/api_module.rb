@@ -3,7 +3,7 @@ module User::ApiModule
 
   def rooms
     all_rooms = with_retryable do
-      ChatWork::Room.get
+      api_client.get_rooms
     end
 
     all_rooms.select { |room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
@@ -11,7 +11,7 @@ module User::ApiModule
 
   def room_name
     room = with_retryable do
-      ChatWork::Room.find(room_id: room_id)
+      api_client.find_room(room_id: room_id)
     end
 
     return I18n.t("app.my_chat") if room.type == "my"
@@ -20,7 +20,7 @@ module User::ApiModule
 
   def create_task(room_id:, body:, to_ids:, limit_at: nil)
     with_retryable do
-      ChatWork::Task.create(room_id: room_id, body: body, to_ids: to_ids, limit: limit_at&.to_i)
+      api_client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit_at&.to_i)
     end
   end
 
@@ -29,8 +29,6 @@ module User::ApiModule
   end
 
   def with_retryable
-    set_token
-
     yield
   rescue ChatWork::AuthenticateError => error
     retry_count ||= 0
@@ -46,12 +44,16 @@ module User::ApiModule
 
   private
 
-    def set_token
-      ChatWork.access_token = access_token
+    def api_client
+      ChatWork::Client.new(access_token: access_token)
+    end
+
+    def oauth_client
+      ChatWork::OAuthClient.new(client_id: ENV["CHATWORK_CLIENT_ID"], client_secret: ENV["CHATWORK_CLIENT_SECRET"])
     end
 
     def refresh_access_token
-      tokens = ChatWork::Token.refresh_access_token(refresh_token)
+      tokens = oauth_client.refresh_access_token(refresh_token)
       self.access_token = tokens[:access_token]
       self.refresh_token = tokens[:refresh_token]
       self.access_token_expires_at = tokens[:expires_in].to_i.seconds.from_now

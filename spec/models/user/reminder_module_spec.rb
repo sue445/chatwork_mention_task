@@ -19,15 +19,17 @@ RSpec.describe User::ReminderModule, type: :model do
       @user2 = create(:user, refresh_token_expires_at: refresh_token_expires_at)
       @user3 = create(:user, refresh_token_expires_at: refresh_token_expires_at, refresh_token_reminded_at: 10.minutes.ago)
 
-      allow(ChatWork::Task).to receive(:create)
+      allow_any_instance_of(User).to receive(:api_client) { api_client } # rubocop:disable RSpec/AnyInstance
+      allow(api_client).to receive(:create_task)
     end
 
     let(:refresh_token_expires_at) { 1.hour.from_now }
+    let(:api_client) { ChatWork::Client.new(api_key: "xxxx") }
 
     it "called create_remind_task" do
       subject
 
-      expect(ChatWork::Task).to have_received(:create).with(hash_including(limit: refresh_token_expires_at.to_i)).once
+      expect(api_client).to have_received(:create_task).with(hash_including(limit: refresh_token_expires_at.to_i)).once
     end
   end
 
