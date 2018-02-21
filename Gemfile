@@ -53,4 +53,5 @@ group :test do
   gem "faker-precure"
   gem "rspec-its"
   gem "rspec-rails", group: :development
+  gem "webmock"
 end
