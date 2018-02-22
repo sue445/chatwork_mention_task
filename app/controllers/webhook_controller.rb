@@ -11,9 +11,11 @@ class WebhookController < ApplicationController
 
     @user.create_my_task(message)
 
+    Rails.logger.info "task is created"
     render plain: "OK", status: 200
   rescue User::RefreshTokenExpiredError => error
     Rollbar.error(error)
+    Rails.logger.warn "refresh_token is expired"
     render plain: "refresh_token is expired", status: 200
   end
 
