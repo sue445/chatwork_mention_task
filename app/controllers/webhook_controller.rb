@@ -50,6 +50,11 @@ class WebhookController < ApplicationController
       verify_chatwork_webhook_signature!(@user.webhook_token)
     end
 
+    # used for rollbar person tracking
+    #
+    # @see https://rollbar.com/docs/notifier/rollbar-gem/
+    #
+    # @return [User]
     def current_user
       @user
     end
