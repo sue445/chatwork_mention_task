@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :webhook, only: [] do
-    collection do
-      post "account/:account_id" => "webhook#account", as: :account
-    end
-  end
-
   resources :auth, only: [] do
     collection do
       get :sign_in, to: redirect("/auth/chatwork")
@@ -16,6 +10,12 @@ Rails.application.routes.draw do
   resources :home, only: [:index]
 
   resource :me, only: [:show, :edit, :update]
+
+  resources :webhook, only: [] do
+    collection do
+      post "account/:account_id" => "webhook#account", as: :account
+    end
+  end
 
   root to: "home#index"
 
