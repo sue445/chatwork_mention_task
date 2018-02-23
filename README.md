@@ -3,6 +3,8 @@ ChatWorkMentionTask can automatically task the mentions that came to you, easily
 
 https://chatwork-mention-task.herokuapp.com/
 
+[![CircleCI](https://circleci.com/gh/sue445/chatwork_mention_task.svg?style=svg)](https://circleci.com/gh/sue445/chatwork_mention_task)
+
 ## Requirements
 * Ruby
 * PostgreSQL
