@@ -4,6 +4,8 @@ ChatWorkMentionTask can automatically task the mentions that came to you, easily
 https://chatwork-mention-task.herokuapp.com/
 
 [![CircleCI](https://circleci.com/gh/sue445/chatwork_mention_task.svg?style=svg)](https://circleci.com/gh/sue445/chatwork_mention_task)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/chatwork_mention_task/badge.svg?branch=master)](https://coveralls.io/github/sue445/chatwork_mention_task?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/30218a3492f17a902243/maintainability)](https://codeclimate.com/github/sue445/chatwork_mention_task/maintainability)
 
 ## Requirements
 * Ruby
