@@ -54,6 +54,9 @@ jobs:
   rspec:
     <<: *default
 
+    environment:
+      CODECLIMATE_REPO_TOKEN: 2a6fed458d94b636376fab1b94b919d2ef166042352e012df00e333475b8aa48
+
     steps:
       - restore_cache:
           <<: *restore_repo_cache_option
@@ -64,6 +67,7 @@ jobs:
       - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
+      - run: bundle exec codeclimate-test-reporter
 
   index_shotgun:
     <<: *default

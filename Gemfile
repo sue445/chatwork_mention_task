@@ -48,10 +48,13 @@ group :development do
 end
 
 group :test do
+  gem "codeclimate-test-reporter", "~> 1.0.0", require: false
+  gem "coveralls", require: false
   gem "factory_bot_rails", group: :development
   gem "faker"
   gem "faker-precure"
   gem "rspec-its"
   gem "rspec-rails", group: :development
+  gem "simplecov", require: false
   gem "webmock"
 end
