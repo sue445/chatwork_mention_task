@@ -38,7 +38,7 @@ bundle exec foreman s
 ```
 
 ## Heroku deploy
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sue445/chatwork_mention_task)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Register `rake remind` to [Heroku Scheduler](https://addons.heroku.com/scheduler)
 
