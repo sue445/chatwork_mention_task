@@ -33,7 +33,7 @@
 
 FactoryBot.define do
   factory :user do
-    sequence(:account_id) { |n| n }
+    sequence(:account_id) {|n| n }
     room_id                  { Faker::Number.number(8) }
     name                     { Faker::Precure.human_name }
     avatar_image_url         { Faker::Avatar.image }

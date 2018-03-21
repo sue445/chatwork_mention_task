@@ -6,7 +6,7 @@ module User::ApiModule
       api_client.get_rooms
     end
 
-    all_rooms.select { |room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
+    all_rooms.select {|room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
   end
 
   def room_name
@@ -15,6 +15,7 @@ module User::ApiModule
     end
 
     return I18n.t("app.my_chat") if room.type == "my"
+
     room.name
   end
 

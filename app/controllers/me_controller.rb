@@ -32,6 +32,6 @@ class MeController < ApplicationController
     end
 
     def translated_available_locales
-      I18n.available_locales.map { |locale| [locale, translated_locale(locale)] }.to_h
+      I18n.available_locales.map {|locale| [locale, translated_locale(locale)] }.to_h
     end
 end

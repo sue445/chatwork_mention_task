@@ -6,7 +6,7 @@ RSpec.describe MeController, :logged_in, type: :controller do
       allow(current_user).to receive(:room_name) { "" }
     end
 
-    it { should have_http_status(200) }
+    it { should have_http_status(:ok) }
   end
 
   describe "GET #edit" do
@@ -16,7 +16,7 @@ RSpec.describe MeController, :logged_in, type: :controller do
       allow(current_user).to receive(:rooms) { [] }
     end
 
-    it { should have_http_status(200) }
+    it { should have_http_status(:ok) }
   end
 
   describe "PUT #update" do
