@@ -55,7 +55,7 @@ RSpec.describe WebhookController, type: :controller do
         MSG
       end
 
-      it { should have_http_status 200 }
+      it { should have_http_status :ok }
 
       it "called ChatWork::Client#create_task" do
         subject
