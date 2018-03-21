@@ -15,6 +15,7 @@ module User::ApiModule
     end
 
     return I18n.t("app.my_chat") if room.type == "my"
+
     room.name
   end
 
