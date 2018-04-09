@@ -3,7 +3,7 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.1"
 
-gem "rails", "5.2.0.rc2"
+gem "rails", "5.2.0"
 
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
