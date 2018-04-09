@@ -7,3 +7,6 @@ inherit_gem:
 AllCops:
   TargetRubyVersion: 2.5
   TargetRailsVersion: 5.2
+
+RSpec/SharedExamples:
+  Enabled: false
