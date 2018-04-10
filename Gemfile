@@ -3,7 +3,7 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.1"
 
-gem "rails", "5.2.0.rc2"
+gem "rails", "5.2.0"
 
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
@@ -14,7 +14,7 @@ gem "chatwork_webhook_verify"
 gem "connection_pool"
 gem "dalli"
 gem "enum_help"
-gem "font-awesome-rails"
+gem "font-awesome-rails", ">= 4.7.0.3"
 gem "global"
 gem "http_accept_language"
 gem "i18n-tasks"
