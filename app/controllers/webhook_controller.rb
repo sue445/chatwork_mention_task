@@ -16,7 +16,7 @@ class WebhookController < ApplicationController
   rescue User::RefreshTokenExpiredError => error
     Rollbar.error(error)
     Rails.logger.warn "refresh_token is expired"
-    render plain: "refresh_token is expired", status: 200
+    render plain: "refresh_token is expired", status: 401
   end
 
   # @params webhook_event [Hash]
