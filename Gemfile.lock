@@ -8,16 +8,6 @@ GIT
       rails (>= 5.0)
 
 GIT
-  remote: https://github.com/ctran/annotate_models.git
-  revision: e3e0bbe9fdcc23db49862cb1f9ce239e765e63b1
-  ref: e3e0bbe
-  branch: develop
-  specs:
-    annotate (2.7.2)
-      activerecord (>= 3.2, < 6.0)
-      rake (>= 10.4, < 13.0)
-
-GIT
   remote: https://github.com/mitaku/komachi_heartbeat.git
   revision: cd043934cb92702f8cccea164d576cc675dd1e33
   ref: cd04393
@@ -72,6 +62,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    annotate (2.7.3)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
     arel (9.0.0)
     ast (2.4.0)
     auto_strip_attributes (2.4.0)
@@ -360,7 +353,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate!
+  annotate (>= 2.7.3)
   auto_strip_attributes
   bootsnap
   bootstrap
