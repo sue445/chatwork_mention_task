@@ -35,10 +35,7 @@ gem "turbolinks"
 gem "uglifier"
 
 group :development do
-  # annotate v2.7.2 + rails v5.2.0.beta2 doesn't work, but fixed at develop
-  # TODO: Upgrade to v2.7.3+
-  gem "annotate", github: "ctran/annotate_models", branch: "develop", ref: "e3e0bbe"
-
+  gem "annotate", ">= 2.7.3"
   gem "dotenv-rails", ">= 2.2.1"
   gem "foreman", require: false
   gem "index_shotgun", group: :test
