@@ -82,4 +82,12 @@ class User < ApplicationRecord
   def self.time_zone_from_locale(locale)
     LOCALE_TIME_ZONES[locale] || "UTC"
   end
+
+  def suppress_error_with_notification
+    Rollbar.scope!(person: { id: id, username: account_id })
+
+    yield
+  rescue => error
+    Rollbar.error(error)
+  end
 end

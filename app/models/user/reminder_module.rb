@@ -13,8 +13,9 @@ module User::ReminderModule
   class_methods do
     def remind_refresh_token_will_expire
       remind_target.each do |user|
-        Rollbar.scope!(person: { id: user.id, username: user.account_id })
-        user.create_remind_task
+        user.suppress_error_with_notification do
+          user.create_remind_task
+        end
       end
     end
   end
