@@ -31,6 +31,9 @@ html lang="en"
               .dropdown-menu aria-labelledby="navbarDropdown"
                 a.dropdown-item href=me_path
                   = fa_icon "cog", text: t("views.me.show.title")
+                - if contact_link
+                  a.dropdown-item href=contact_link
+                    = fa_icon "external-link", text: t("views.home.contact.title")
                 .dropdown-divider
                 a.dropdown-item href=sign_out_auth_index_path
                   = fa_icon "sign-out", text: t("app.sign_out")

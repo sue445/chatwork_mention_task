@@ -42,6 +42,10 @@ en:
       cancel: "Cancel"
 
     home:
+      contact:
+        title:       "Contact"
+        description: "Contact to owner of ChatWorkMentionTask"
+
       index:
         about: |-
           ChatWorkMentionTask can automatically task the mentions that came to you, easily look back on it later.

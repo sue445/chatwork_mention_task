@@ -19,6 +19,11 @@
     "CHATWORK_CLIENT_SECRET": {
       "description": "Client Secret of ChatWork OAuth Client"
     },
+    "CONTACT_LINK": {
+      "description": "Url for contact (e.g. Google Form)",
+      "value": "",
+      "required": false
+    },
     "MAX_THREADS": {
       "description": "puma threads count",
       "value": "5",
