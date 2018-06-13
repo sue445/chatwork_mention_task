@@ -11,6 +11,10 @@ ja:
       cancel: "キャンセル"
 
     home:
+      contact:
+        title:       "問い合わせ"
+        description: "ChatWorkMentionTaskの作者への問い合わせ"
+
       index:
         about: |-
           ChatWorkMentionTaskは自分にきたメンションを自動的にタスク化し、後から容易に見返すことができます。

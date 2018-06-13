@@ -11,6 +11,13 @@ section.jumbotron.text-center
     a.btn.btn-primary role="button" href=me_path
       = fa_icon "cog", text: t("views.me.show.title")
 
+  - if contact_link
+    hr
+    div.text-center
+      h2 = t("views.home.contact.description")
+      a.btn.btn-secondary role="button" href=contact_link target="_blank"
+        = fa_icon "external-link", text: t("views.home.contact.title")
+
 - else
   div.text-center
     a.btn.btn-primary role="button" href=sign_in_auth_index_path
