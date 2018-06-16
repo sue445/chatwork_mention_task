@@ -8,7 +8,7 @@ gem "rails", "5.2.0"
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
 gem "bootstrap"
-gem "bootstrap_form", github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master", ref: "8a7188f" # TODO: Use gemified version
+gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem "chatwork"
 gem "chatwork_webhook_verify"
 gem "connection_pool"

@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/bootstrap-ruby/rails-bootstrap-forms.git
-  revision: 8a7188fbb2d55bbd6c64f9130e7882eea56bfee9
-  ref: 8a7188f
-  branch: master
-  specs:
-    bootstrap_form (4.0.0.dev)
-      rails (>= 5.0)
-
-GIT
   remote: https://github.com/mitaku/komachi_heartbeat.git
   revision: cd043934cb92702f8cccea164d576cc675dd1e33
   ref: cd04393
@@ -77,6 +68,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap_form (4.0.0.alpha1)
+      rails (>= 5.0)
     builder (3.2.3)
     byebug (10.0.2)
     chatwork (0.8.0)
@@ -357,7 +350,7 @@ DEPENDENCIES
   auto_strip_attributes
   bootsnap
   bootstrap
-  bootstrap_form!
+  bootstrap_form (>= 4.0.0.alpha1)
   chatwork
   chatwork_webhook_verify
   codeclimate-test-reporter (~> 1.0.0)
