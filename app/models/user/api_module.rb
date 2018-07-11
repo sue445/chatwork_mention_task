@@ -41,6 +41,16 @@ module User::ApiModule
     end
 
     raise
+  rescue ChatWork::APIError => error
+    retry_count ||= 0
+    retry_count += 1
+
+    if retry_count == 1 && error.message == "Invalid API Token"
+      refresh_access_token
+      retry
+    end
+
+    raise
   end
 
   private
