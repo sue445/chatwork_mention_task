@@ -357,7 +357,7 @@ DEPENDENCIES
   chatwork_webhook_verify
   codeclimate-test-reporter (~> 1.0.0)
   connection_pool
-  coveralls
+  coveralls (>= 0.8)
   dalli
   dotenv-rails (>= 2.2.1)
   enum_help
