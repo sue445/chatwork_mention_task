@@ -84,15 +84,6 @@ en:
         locale:                   "Locale"
         time_zone:                "TimeZone"
 
-    user:
-      remind_task:
-        title: "from ChatworkMentionTask"
-        message: |-
-          Your refresh token is due to expire around %{expires_at}.
-          Please sign in again so far.
-
-          %{sign_in_url}
-
   enums:
     user:
       account_type:
