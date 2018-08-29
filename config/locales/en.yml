@@ -77,12 +77,12 @@ en:
 
     attributes:
       user:
-        account_id:               "Account ID"
-        account_type:             "Account Type"
-        room_id:                  "Room to notify"
-        webhook_token:            "Webhook token"
-        locale:                   "Locale"
-        time_zone:                "TimeZone"
+        account_id:    "Account ID"
+        account_type:  "Account Type"
+        room_id:       "Room to notify"
+        webhook_token: "Webhook token"
+        locale:        "Locale"
+        time_zone:     "TimeZone"
 
   enums:
     user:

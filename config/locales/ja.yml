@@ -46,12 +46,12 @@ ja:
 
     attributes:
       user:
-        account_id:               "アカウントID"
-        account_type:             "アカウントタイプ"
-        room_id:                  "通知先の部屋"
-        webhook_token:            "Webhookトークン"
-        locale:                   "言語"
-        time_zone:                "タイムゾーン"
+        account_id:    "アカウントID"
+        account_type:  "アカウントタイプ"
+        room_id:       "通知先の部屋"
+        webhook_token: "Webhookトークン"
+        locale:        "言語"
+        time_zone:     "タイムゾーン"
 
   enums:
     user:
