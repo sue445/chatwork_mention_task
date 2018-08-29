@@ -1,9 +1,5 @@
 default:
-  host: "https://localhost"
-
   verify_signature: false
 
 production:
-  host: "https://<%= ENV['HEROKU_APP_NAME'] %>.herokuapp.com"
-
   verify_signature: true

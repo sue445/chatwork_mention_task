@@ -46,22 +46,12 @@ ja:
 
     attributes:
       user:
-        account_id:               "アカウントID"
-        account_type:             "アカウントタイプ"
-        room_id:                  "通知先の部屋"
-        webhook_token:            "Webhookトークン"
-        refresh_token_expires_at: "リフレッシュトークンの有効期限"
-        locale:                   "言語"
-        time_zone:                "タイムゾーン"
-
-    user:
-      remind_task:
-        title: "from ChatworkMentionTask"
-        message: |-
-          あなたのリフレッシュトークンは%{expires_at}頃に切れます。
-          それまでにもう一度ログインしてください。
-
-          %{sign_in_url}
+        account_id:    "アカウントID"
+        account_type:  "アカウントタイプ"
+        room_id:       "通知先の部屋"
+        webhook_token: "Webhookトークン"
+        locale:        "言語"
+        time_zone:     "タイムゾーン"
 
   enums:
     user:

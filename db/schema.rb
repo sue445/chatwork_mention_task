@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_07_165024) do
+ActiveRecord::Schema.define(version: 2018_08_29_142841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2018_02_07_165024) do
     t.string "access_token", null: false
     t.string "refresh_token", null: false
     t.datetime "access_token_expires_at", null: false
-    t.datetime "refresh_token_expires_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "webhook_token"
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 2018_02_07_165024) do
     t.string "locale", default: "en", null: false
     t.string "time_zone", default: "UTC", null: false
     t.index ["account_id"], name: "index_users_on_account_id", unique: true
-    t.index ["refresh_token_expires_at"], name: "index_users_on_refresh_token_expires_at"
   end
 
 end

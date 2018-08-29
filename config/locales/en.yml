@@ -77,22 +77,12 @@ en:
 
     attributes:
       user:
-        account_id:               "Account ID"
-        account_type:             "Account Type"
-        room_id:                  "Room to notify"
-        webhook_token:            "Webhook token"
-        refresh_token_expires_at: "Expires at for refresh token"
-        locale:                   "Locale"
-        time_zone:                "TimeZone"
-
-    user:
-      remind_task:
-        title: "from ChatworkMentionTask"
-        message: |-
-          Your refresh token is due to expire around %{expires_at}.
-          Please sign in again so far.
-
-          %{sign_in_url}
+        account_id:    "Account ID"
+        account_type:  "Account Type"
+        room_id:       "Room to notify"
+        webhook_token: "Webhook token"
+        locale:        "Locale"
+        time_zone:     "TimeZone"
 
   enums:
     user:

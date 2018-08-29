@@ -14,7 +14,6 @@
 # **`access_token`**               | `string`           | `not null`
 # **`refresh_token`**              | `string`           | `not null`
 # **`access_token_expires_at`**    | `datetime`         | `not null`
-# **`refresh_token_expires_at`**   | `datetime`         | `not null`
 # **`created_at`**                 | `datetime`         | `not null`
 # **`updated_at`**                 | `datetime`         | `not null`
 # **`webhook_token`**              | `string`           |
@@ -27,18 +26,10 @@
 #
 # * `index_users_on_account_id` (_unique_):
 #     * **`account_id`**
-# * `index_users_on_refresh_token_expires_at`:
-#     * **`refresh_token_expires_at`**
 #
 
 class User < ApplicationRecord
   include User::ApiModule
-  include User::ReminderModule
-
-  # c.f. http://download.chatwork.com/ChatWork_API_Documentation.pdf
-  REFRESH_TOKEN_EXPIRES_IN = 14.days
-
-  REFRESH_TOKEN_EXPIRES_REMIND = 3.days
 
   LOCALE_TIME_ZONES = {
     ja: "Tokyo",
@@ -67,7 +58,6 @@ class User < ApplicationRecord
     user.access_token_expires_at = Time.zone.at(auth_hash[:credentials][:expires_at])
 
     if user.refresh_token_changed?
-      user.refresh_token_expires_at = REFRESH_TOKEN_EXPIRES_IN.from_now
       user.refresh_token_reminded_at = nil
     end
 

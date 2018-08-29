@@ -21,8 +21,5 @@ dl
   dt = t("activerecord.attributes.user.webhook_token")
   dd = @user.webhook_token
 
-  dt = t("activerecord.attributes.user.refresh_token_expires_at")
-  dd = l(@user.refresh_token_expires_at)
-
 a.btn.btn-primary role="button" href=edit_me_path
   = fa_icon "cog", text: t("views.form.edit")

@@ -59,7 +59,6 @@ RSpec.describe User, type: :model do
       its(:access_token)              { should eq "access_token" }
       its(:refresh_token)             { should eq "refresh_token" }
       its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
-      its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
       its(:refresh_token_reminded_at) { should eq nil }
       its(:locale)                    { should eq "ja" }
       its(:time_zone)                 { should eq "Tokyo" }
@@ -72,13 +71,11 @@ RSpec.describe User, type: :model do
           account_id: 1_111_111,
           room_id: room_id,
           refresh_token: refresh_token,
-          refresh_token_expires_at: refresh_token_expires_at,
           refresh_token_reminded_at: refresh_token_reminded_at,
         )
       end
 
       let(:room_id) { 2_222_222 }
-      let(:refresh_token_expires_at)  { 1.day.ago }
       let(:refresh_token_reminded_at) { 2.day.ago }
 
       context "when refresh token is not updated" do
@@ -93,7 +90,6 @@ RSpec.describe User, type: :model do
         its(:access_token)              { should eq "access_token" }
         its(:refresh_token)             { should eq "refresh_token" }
         its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
-        its(:refresh_token_expires_at)  { should match_unixtime(refresh_token_expires_at) }
         its(:refresh_token_reminded_at) { should eq refresh_token_reminded_at }
         its(:locale)                    { should eq "en" }
         its(:time_zone)                 { should eq "UTC" }
@@ -111,7 +107,6 @@ RSpec.describe User, type: :model do
         its(:access_token)              { should eq "access_token" }
         its(:refresh_token)             { should eq "refresh_token" }
         its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
-        its(:refresh_token_expires_at)  { should match_unixtime(User::REFRESH_TOKEN_EXPIRES_IN.from_now) }
         its(:refresh_token_reminded_at) { should eq nil }
         its(:locale)                    { should eq "en" }
         its(:time_zone)                 { should eq "UTC" }
