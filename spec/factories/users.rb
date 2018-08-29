@@ -14,7 +14,6 @@
 # **`access_token`**               | `string`           | `not null`
 # **`refresh_token`**              | `string`           | `not null`
 # **`access_token_expires_at`**    | `datetime`         | `not null`
-# **`refresh_token_expires_at`**   | `datetime`         | `not null`
 # **`created_at`**                 | `datetime`         | `not null`
 # **`updated_at`**                 | `datetime`         | `not null`
 # **`webhook_token`**              | `string`           |
@@ -27,8 +26,6 @@
 #
 # * `index_users_on_account_id` (_unique_):
 #     * **`account_id`**
-# * `index_users_on_refresh_token_expires_at`:
-#     * **`refresh_token_expires_at`**
 #
 
 FactoryBot.define do
@@ -40,6 +37,5 @@ FactoryBot.define do
     access_token             { Faker::Internet.password }
     refresh_token            { Faker::Internet.password }
     access_token_expires_at  { 30.minutes.from_now }
-    refresh_token_expires_at { 14.days.from_now }
   end
 end
