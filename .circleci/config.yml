@@ -18,39 +18,17 @@ default: &default
     - image: memcached:1.5-alpine
   working_directory: ~/app
 
+save_bundle_cache_option: &save_bundle_cache_option
+  key: v2-bundle-{{ checksum "Gemfile.lock" }}
+  paths:
+    - ~/app/vendor/bundle
+
 restore_bundle_cache_option: &restore_bundle_cache_option
   keys:
     - v2-bundle-{{ checksum "Gemfile.lock" }}
     - v2-bundle
 
-restore_repo_cache_option: &restore_repo_cache_option
-  key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-
 jobs:
-  checkout_code:
-    <<: *default
-
-    steps:
-      - checkout
-      - save_cache:
-          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - ~/app
-
-  bundle_dependencies:
-    <<: *default
-
-    steps:
-      - restore_cache:
-          <<: *restore_repo_cache_option
-      - restore_cache:
-          <<: *restore_bundle_cache_option
-      - run: ./.circleci/setup_bundle.sh
-      - save_cache:
-          key: v2-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/app/vendor/bundle
-
   rspec:
     <<: *default
 
@@ -58,12 +36,12 @@ jobs:
       CODECLIMATE_REPO_TOKEN: 2a6fed458d94b636376fab1b94b919d2ef166042352e012df00e333475b8aa48
 
     steps:
-      - restore_cache:
-          <<: *restore_repo_cache_option
+      - checkout
       - restore_cache:
           <<: *restore_bundle_cache_option
-
       - run: ./.circleci/setup_bundle.sh
+      - save_cache:
+          <<: *save_bundle_cache_option
       - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
@@ -73,12 +51,12 @@ jobs:
     <<: *default
 
     steps:
-      - restore_cache:
-          <<: *restore_repo_cache_option
+      - checkout
       - restore_cache:
           <<: *restore_bundle_cache_option
-
       - run: ./.circleci/setup_bundle.sh
+      - save_cache:
+          <<: *save_bundle_cache_option
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
@@ -87,12 +65,12 @@ jobs:
     <<: *default
 
     steps:
-      - restore_cache:
-          <<: *restore_repo_cache_option
+      - checkout
       - restore_cache:
           <<: *restore_bundle_cache_option
-
       - run: ./.circleci/setup_bundle.sh
+      - save_cache:
+          <<: *save_bundle_cache_option
 
       - run: bundle exec rubocop
 
@@ -102,8 +80,7 @@ jobs:
     working_directory: /home/circleci/app
 
     steps:
-      - restore_cache:
-          <<: *restore_repo_cache_option
+      - checkout
       - run: .circleci/heroku_setup.sh
       - add_ssh_keys:
           fingerprints:
@@ -115,19 +92,9 @@ workflows:
 
   build-and-deploy:
     jobs:
-      - checkout_code
-      - bundle_dependencies:
-          requires:
-            - checkout_code
-      - rspec:
-          requires:
-            - bundle_dependencies
-      - index_shotgun:
-          requires:
-            - bundle_dependencies
-      - rubocop:
-          requires:
-            - bundle_dependencies
+      - rspec
+      - index_shotgun
+      - rubocop
       - deploy:
           requires:
             - rspec
