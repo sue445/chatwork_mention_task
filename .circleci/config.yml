@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
 
 default: &default
   docker:
@@ -18,15 +18,29 @@ default: &default
     - image: memcached:1.5-alpine
   working_directory: ~/app
 
-save_bundle_cache_option: &save_bundle_cache_option
-  key: v2-bundle-{{ checksum "Gemfile.lock" }}
-  paths:
-    - ~/app/vendor/bundle
+commands:
+  setup_bundle:
+    description: "Setup bundle with cache"
+    steps:
+      - restore_cache:
+          keys:
+          - v2-bundle-{{ checksum "Gemfile.lock" }}
+          - v2-bundle
+      - run:
+          name: Setup bundle
+          command: |
+            set -xe
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle clean
 
-restore_bundle_cache_option: &restore_bundle_cache_option
-  keys:
-    - v2-bundle-{{ checksum "Gemfile.lock" }}
-    - v2-bundle
+            # Resolve bundler version difference between Gemfile.lock and pre-installed in CI
+            gem install restore_bundled_with --no-document
+            restore-bundled-with
+
+      - save_cache:
+          key: v2-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+          - ~/app/vendor/bundle
 
 jobs:
   rspec:
@@ -37,11 +51,7 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          <<: *restore_bundle_cache_option
-      - run: ./.circleci/setup_bundle.sh
-      - save_cache:
-          <<: *save_bundle_cache_option
+      - setup_bundle
       - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
@@ -52,11 +62,7 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          <<: *restore_bundle_cache_option
-      - run: ./.circleci/setup_bundle.sh
-      - save_cache:
-          <<: *save_bundle_cache_option
+      - setup_bundle
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
@@ -66,11 +72,7 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          <<: *restore_bundle_cache_option
-      - run: ./.circleci/setup_bundle.sh
-      - save_cache:
-          <<: *save_bundle_cache_option
+      - setup_bundle
 
       - run: bundle exec rubocop
 
