@@ -14,12 +14,12 @@ RSpec.describe WebhookController, type: :controller do
 
     let(:params) do
       {
-        account_id: user.account_id,
+        account_id:                 user.account_id,
         chatwork_webhook_signature: "XXXXXXXXXXXXXXXXXXXXXX",
-        webhook_setting_id: "12345",
-        webhook_event_type: webhook_event_type,
-        webhook_event_time: 1_498_028_130,
-        webhook_event: {
+        webhook_setting_id:         "12345",
+        webhook_event_type:         webhook_event_type,
+        webhook_event_time:         1_498_028_130,
+        webhook_event:              {
           from_account_id: 1_234_567_890,
           to_account_id:   1_484_814,
           room_id:         567_890_123,
@@ -28,11 +28,11 @@ RSpec.describe WebhookController, type: :controller do
           send_time:       1_498_028_125,
           update_time:     0,
         },
-        webhook: {
+        webhook:                    {
           webhook_setting_id: "12345",
           webhook_event_type: webhook_event_type,
           webhook_event_time: 1_498_028_130,
-          webhook_event: {
+          webhook_event:      {
             from_account_id: 1_234_567_890,
             to_account_id:   1_484_814,
             room_id:         567_890_123,

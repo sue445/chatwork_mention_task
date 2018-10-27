@@ -4,44 +4,44 @@ RSpec.describe User, type: :model do
 
     let(:auth_hash) do
       {
-        provider: "chatwork",
-        uid: 1_111_111,
-        info: {
-          name: "sue445",
-          email: "sue445@example.com",
+        provider:    "chatwork",
+        uid:         1_111_111,
+        info:        {
+          name:        "sue445",
+          email:       "sue445@example.com",
           description: "I am cure engineer!",
-          image: "https://appdata.chatwork.com/avatar/ico_default_blue.png",
-          urls: {
+          image:       "https://appdata.chatwork.com/avatar/ico_default_blue.png",
+          urls:        {
             profile: "http://github.com/sue445",
           },
         },
         credentials: {
-          token: "access_token",
+          token:         "access_token",
           refresh_token: "refresh_token",
-          expires_at: 1_510_504_991,
-          expires: true,
+          expires_at:    1_510_504_991,
+          expires:       true,
         },
-        extra: {
+        extra:       {
           raw_info: {
-            account_id: 1_111_111,
-            room_id: 2_222_222,
-            name: "sue445",
-            chatwork_id: "",
-            organization_id: 1_111_111,
+            account_id:        1_111_111,
+            room_id:           2_222_222,
+            name:              "sue445",
+            chatwork_id:       "",
+            organization_id:   1_111_111,
             organization_name: "",
-            department: "",
-            title: "",
-            url: "http://github.com/sue445",
-            introduction: "I am cure engineer!",
-            mail: "",
-            tel_organization: "",
-            tel_extension: "",
-            tel_mobile: "",
-            skype: "",
-            facebook: "",
-            twitter: "",
-            avatar_image_url: "https://appdata.chatwork.com/avatar/ico_default_blue.png",
-            login_mail: "sue445@example.com",
+            department:        "",
+            title:             "",
+            url:               "http://github.com/sue445",
+            introduction:      "I am cure engineer!",
+            mail:              "",
+            tel_organization:  "",
+            tel_extension:     "",
+            tel_mobile:        "",
+            skype:             "",
+            facebook:          "",
+            twitter:           "",
+            avatar_image_url:  "https://appdata.chatwork.com/avatar/ico_default_blue.png",
+            login_mail:        "sue445@example.com",
           },
         },
       }
@@ -68,9 +68,9 @@ RSpec.describe User, type: :model do
       before do
         create(
           :user,
-          account_id: 1_111_111,
-          room_id: room_id,
-          refresh_token: refresh_token,
+          account_id:                1_111_111,
+          room_id:                   room_id,
+          refresh_token:             refresh_token,
           refresh_token_reminded_at: refresh_token_reminded_at,
         )
       end

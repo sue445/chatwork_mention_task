@@ -64,9 +64,9 @@ RSpec.describe User::ApiModule, type: :model do
 
       let(:error_response) do
         Hashie::Mash.new(
-          error: "invalid_grant",
+          error:             "invalid_grant",
           error_description: "Invalid refresh token.",
-          error_uri: nil,
+          error_uri:         nil,
         )
       end
 
