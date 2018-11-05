@@ -80,7 +80,7 @@ GEM
     codeclimate-test-reporter (1.0.7)
       simplecov
     coderay (1.1.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     connection_pool (2.2.2)
     coveralls (0.8.22)
       json (>= 1.8, < 3)
@@ -144,7 +144,7 @@ GEM
       activerecord
       thor
     jaro_winkler (1.5.1)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
