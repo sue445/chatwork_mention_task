@@ -4,6 +4,9 @@
 #
 version: 2.1
 
+orbs:
+  sue445-bundle-install: sue445/bundle-install@0.1.0
+
 default: &default
   docker:
     - image: circleci/ruby:2.5.3-node
@@ -18,30 +21,6 @@ default: &default
     - image: memcached:1.5-alpine
   working_directory: ~/app
 
-commands:
-  setup_bundle:
-    description: "Setup bundle with cache"
-    steps:
-      - restore_cache:
-          keys:
-          - v2-bundle-{{ checksum "Gemfile.lock" }}
-          - v2-bundle
-      - run:
-          name: Setup bundle
-          command: |
-            set -xe
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-            bundle clean
-
-            # Resolve bundler version difference between Gemfile.lock and pre-installed in CI
-            gem install restore_bundled_with --no-document
-            restore-bundled-with
-
-      - save_cache:
-          key: v2-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-          - ~/app/vendor/bundle
-
 jobs:
   rspec:
     <<: *default
@@ -51,7 +30,8 @@ jobs:
 
     steps:
       - checkout
-      - setup_bundle
+      - sue445-bundle-install/bundle-install:
+          cache_key_prefix: "v2-bundle"
       - run: ./.circleci/setup_database.sh
 
       - run: bundle exec rspec
@@ -62,7 +42,8 @@ jobs:
 
     steps:
       - checkout
-      - setup_bundle
+      - sue445-bundle-install/bundle-install:
+          cache_key_prefix: "v2-bundle"
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
@@ -72,7 +53,8 @@ jobs:
 
     steps:
       - checkout
-      - setup_bundle
+      - sue445-bundle-install/bundle-install:
+          cache_key_prefix: "v2-bundle"
 
       - run: bundle exec rubocop
 
