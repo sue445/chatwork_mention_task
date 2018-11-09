@@ -5,32 +5,35 @@
 version: 2.1
 
 orbs:
-  sue445-bundle-install: sue445/bundle-install@0.1.0
+  ruby-orbs: sue445/ruby-orbs@volatile
+  heroku: circleci/heroku@0.0.2
 
-default: &default
-  docker:
-    - image: circleci/ruby:2.5.3-node
-      environment:
-        PGHOST: 127.0.0.1
-        PGUSER: ubuntu
-        RAILS_ENV: test
-    - image: circleci/postgres:10-alpine
-      environment:
-        POSTGRES_USER: ubuntu
-        POSTGRES_DB: chatwork_mention_task_test
-    - image: memcached:1.5-alpine
-  working_directory: ~/app
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.5.3-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: ubuntu
+          RAILS_ENV: test
+      - image: circleci/postgres:10-alpine
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: chatwork_mention_task_test
+      - image: memcached:1.5-alpine
+    working_directory: ~/app
 
 jobs:
   rspec:
-    <<: *default
+    executor:
+      name: default
 
     environment:
       CODECLIMATE_REPO_TOKEN: 2a6fed458d94b636376fab1b94b919d2ef166042352e012df00e333475b8aa48
 
     steps:
       - checkout
-      - sue445-bundle-install/bundle-install:
+      - ruby-orbs/bundle-install:
           cache_key_prefix: "v2-bundle"
       - run: ./.circleci/setup_database.sh
 
@@ -38,38 +41,27 @@ jobs:
       - run: bundle exec codeclimate-test-reporter
 
   index_shotgun:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
-      - sue445-bundle-install/bundle-install:
+      - ruby-orbs/bundle-install:
           cache_key_prefix: "v2-bundle"
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
 
   rubocop:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
-      - sue445-bundle-install/bundle-install:
+      - ruby-orbs/bundle-install:
           cache_key_prefix: "v2-bundle"
 
       - run: bundle exec rubocop
-
-  deploy:
-    docker:
-      - image: sue445/heroku-cli
-    working_directory: /home/circleci/app
-
-    steps:
-      - checkout
-      - run: .circleci/heroku_setup.sh
-      - add_ssh_keys:
-          fingerprints:
-            - "e6:7a:84:ef:06:e7:14:c0:09:4c:52:68:57:de:59:7f"
-      - run: .circleci/heroku_deploy.sh
 
 workflows:
   version: 2
@@ -79,7 +71,9 @@ workflows:
       - rspec
       - index_shotgun
       - rubocop
-      - deploy:
+      - heroku/deploy-via-git:
+          post-deploy:
+            - run: heroku run rake db:migrate --app $HEROKU_APP_NAME
           context: Heroku
           requires:
             - rspec
