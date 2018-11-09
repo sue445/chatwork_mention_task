@@ -63,19 +63,6 @@ jobs:
 
       - run: bundle exec rubocop
 
-  deploy:
-    docker:
-      - image: sue445/heroku-cli
-    working_directory: /home/circleci/app
-
-    steps:
-      - checkout
-      - run: .circleci/heroku_setup.sh
-      - add_ssh_keys:
-          fingerprints:
-            - "e6:7a:84:ef:06:e7:14:c0:09:4c:52:68:57:de:59:7f"
-      - run: .circleci/heroku_deploy.sh
-
 workflows:
   version: 2
 
