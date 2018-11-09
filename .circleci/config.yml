@@ -85,6 +85,6 @@ workflows:
             - rspec
             - index_shotgun
             - rubocop
-          filters:
-            branches:
-              only: master
+#          filters:
+#            branches:
+#              only: master
