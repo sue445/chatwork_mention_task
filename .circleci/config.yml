@@ -6,6 +6,7 @@ version: 2.1
 
 orbs:
   ruby-orbs: sue445/ruby-orbs@volatile
+  heroku: circleci/heroku@0.0.2
 
 default: &default
   docker:
@@ -79,7 +80,9 @@ workflows:
       - rspec
       - index_shotgun
       - rubocop
-      - deploy:
+      - heroku/deploy-via-git:
+          post-deploy:
+            - run: heroku run rake db:migrate --app $HEROKU_APP_NAME
           context: Heroku
           requires:
             - rspec
