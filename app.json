@@ -4,15 +4,8 @@
   "keywords": ["ruby", "rails", "bootstrap", "chatwork"],
   "website": "https://chatwork-mention-task.herokuapp.com/",
   "repository": "https://github.com/sue445/chatwork_mention_task",
-  "scripts": {
-    "postdeploy": "./bin/rails db:migrate"
-  },
   "env": {
     "HEROKU_APP_NAME": "",
-    "BUNDLE_WITHOUT": {
-      "description": "bundle install --without <these>",
-      "value": "test:development"
-    },
     "CHATWORK_CLIENT_ID": {
       "description": "Client ID of ChatWork OAuth Client"
     },
