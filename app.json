@@ -6,10 +6,6 @@
   "repository": "https://github.com/sue445/chatwork_mention_task",
   "env": {
     "HEROKU_APP_NAME": "",
-    "BUNDLE_WITHOUT": {
-      "description": "bundle install --without <these>",
-      "value": "test:development"
-    },
     "CHATWORK_CLIENT_ID": {
       "description": "Client ID of ChatWork OAuth Client"
     },
