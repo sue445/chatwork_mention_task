@@ -45,7 +45,6 @@ group :development do
 end
 
 group :test do
-  gem "codeclimate-test-reporter", "~> 1.0.0", require: false
   gem "coveralls", ">= 0.8", require: false
   gem "factory_bot_rails", group: :development
   gem "faker"
