@@ -12,7 +12,7 @@ executors:
           PGHOST: 127.0.0.1
           PGUSER: ubuntu
           RAILS_ENV: test
-      - image: circleci/postgres:10-alpine
+      - image: circleci/postgres:10-alpine-ram
         environment:
           POSTGRES_USER: ubuntu
           POSTGRES_DB: chatwork_mention_task_test
