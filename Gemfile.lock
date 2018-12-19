@@ -98,7 +98,7 @@ GEM
       railties (>= 3.2, < 6.0)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
-    erubi (1.7.1)
+    erubi (1.8.0)
     execjs (2.7.0)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
