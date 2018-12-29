@@ -49,7 +49,7 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install:
-          cache_key_prefix: "v2-bundle"
+          cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
 
       - with-cc-test-reporter:
@@ -63,7 +63,7 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install:
-          cache_key_prefix: "v2-bundle"
+          cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
 
       - run: ./bin/rails index_shotgun:fire
@@ -75,7 +75,7 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install:
-          cache_key_prefix: "v2-bundle"
+          cache_key_prefix: "v3-bundle"
 
       - run: bundle exec rubocop
 
