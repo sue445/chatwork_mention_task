@@ -141,7 +141,7 @@ GEM
     index_shotgun (1.0.0)
       activerecord (>= 5.0.0)
       thor
-    jaro_winkler (1.5.1)
+    jaro_winkler (1.5.2)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
