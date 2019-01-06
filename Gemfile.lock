@@ -138,8 +138,8 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    index_shotgun (0.3.0)
-      activerecord
+    index_shotgun (1.0.0)
+      activerecord (>= 5.0.0)
       thor
     jaro_winkler (1.5.1)
     jbuilder (2.8.0)
