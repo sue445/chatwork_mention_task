@@ -120,7 +120,7 @@ GEM
       thor (~> 0.19.1)
     global (1.1.0)
       activesupport (>= 2.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (0.3.8)
     hashie (3.6.0)
