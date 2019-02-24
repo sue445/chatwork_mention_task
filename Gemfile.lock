@@ -72,7 +72,7 @@ GEM
       rails (>= 5.0)
     builder (3.2.3)
     byebug (11.0.0)
-    chatwork (0.10.0)
+    chatwork (0.11.0)
       faraday (~> 0.9)
       faraday_middleware
       hashie
