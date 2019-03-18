@@ -72,7 +72,7 @@ GEM
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     builder (3.2.3)
-    byebug (11.0.0)
+    byebug (11.0.1)
     chatwork (0.11.0)
       faraday (~> 0.9)
       faraday_middleware
