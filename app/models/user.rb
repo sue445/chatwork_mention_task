@@ -77,7 +77,7 @@ class User < ApplicationRecord
     Rollbar.scope!(person: { id: id, username: account_id })
 
     yield
-  rescue => error
-    Rollbar.error(error)
+  rescue => e
+    Rollbar.error(e)
   end
 end
