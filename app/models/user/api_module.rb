@@ -31,21 +31,21 @@ module User::ApiModule
 
   def with_retryable
     yield
-  rescue ChatWork::AuthenticateError => error
+  rescue ChatWork::AuthenticateError => e
     retry_count ||= 0
     retry_count += 1
 
-    if retry_count == 1 && error.error == "invalid_token"
+    if retry_count == 1 && e.error == "invalid_token"
       refresh_access_token
       retry
     end
 
     raise
-  rescue ChatWork::APIError => error
+  rescue ChatWork::APIError => e
     retry_count ||= 0
     retry_count += 1
 
-    if retry_count == 1 && error.message == "Invalid API Token"
+    if retry_count == 1 && e.message == "Invalid API Token"
       refresh_access_token
       retry
     end
@@ -69,8 +69,8 @@ module User::ApiModule
       self.refresh_token = tokens[:refresh_token]
       self.access_token_expires_at = tokens[:expires_in].to_i.seconds.from_now
       save!
-    rescue ChatWork::AuthenticateError => error
-      if error.error == "invalid_grant" && error.error_description.match?(/Invalid refresh token/i)
+    rescue ChatWork::AuthenticateError => e
+      if e.error == "invalid_grant" && e.error_description.match?(/Invalid refresh token/i)
         raise User::RefreshTokenExpiredError
       end
 
