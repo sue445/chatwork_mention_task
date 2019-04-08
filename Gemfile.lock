@@ -62,7 +62,7 @@ GEM
       activerecord (>= 4.0)
     autoprefixer-rails (9.5.1)
       execjs
-    bootsnap (1.4.2)
+    bootsnap (1.4.3)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
