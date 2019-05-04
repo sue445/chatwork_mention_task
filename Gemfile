@@ -42,6 +42,7 @@ group :development do
   gem "listen"
   gem "onkcop", require: false
   gem "pry-byebug", group: :test
+  gem "rubocop-performance", require: false
 end
 
 group :test do
