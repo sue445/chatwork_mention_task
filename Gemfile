@@ -29,7 +29,7 @@ gem "puma"
 gem "puma-heroku"
 gem "rails-i18n"
 gem "rollbar"
-gem "sass-rails"
+gem "sassc-rails"
 gem "slim-rails"
 gem "turbolinks"
 gem "uglifier"
@@ -40,7 +40,11 @@ group :development do
   gem "foreman", require: false
   gem "index_shotgun", group: :test
   gem "listen"
-  gem "onkcop", require: false
+
+  # TODO: Remove after https://github.com/onk/onkcop/pull/62 is merged
+  # gem "onkcop", ">= 0.53.0.3", require: false
+  gem "onkcop", require: false, github: "sue445/onkcop", branch: "rubocop_0.68.0"
+
   gem "pry-byebug", group: :test
   gem "rubocop-performance", require: false
 end
