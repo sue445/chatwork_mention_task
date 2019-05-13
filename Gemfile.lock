@@ -7,6 +7,15 @@ GIT
     komachi_heartbeat (2.5.0)
       rails (>= 4.1.0)
 
+GIT
+  remote: https://github.com/sue445/onkcop.git
+  revision: 6256494c1f860f62df6a4d57c81a4c200beee53b
+  branch: rubocop_0.68.0
+  specs:
+    onkcop (0.53.0.3)
+      rubocop (>= 0.53.0)
+      rubocop-rspec (>= 1.24.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -189,9 +198,6 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
-    onkcop (0.53.0.3)
-      rubocop (>= 0.53.0)
-      rubocop-rspec (>= 1.24.0)
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
@@ -279,7 +285,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.6)
     rubocop-performance (1.1.0)
       rubocop (>= 0.67.0)
-    rubocop-rspec (1.32.0)
+    rubocop-rspec (1.33.0)
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
@@ -381,7 +387,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-chatwork
   omniauth-oauth2 (>= 1.5.0)
-  onkcop
+  onkcop!
   pg
   pry-byebug
   puma
@@ -398,6 +404,9 @@ DEPENDENCIES
   turbolinks
   uglifier
   webmock
+
+RUBY VERSION
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.17.2
