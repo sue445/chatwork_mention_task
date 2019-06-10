@@ -269,7 +269,7 @@ GEM
       rspec-expectations (~> 3.8.0)
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
-    rspec-support (3.8.0)
+    rspec-support (3.8.2)
     rubicure (1.2.1)
       activesupport (>= 5.0.0)
       hashie (>= 2.0.5)
