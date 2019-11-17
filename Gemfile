@@ -3,7 +3,7 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
 
-gem "rails", "5.2.3"
+gem "rails", "6.0.1"
 
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
@@ -48,6 +48,7 @@ group :development do
   gem "pry-byebug", group: :test
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop_auto_corrector", require: false
 end
 
 group :test do
