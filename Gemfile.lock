@@ -301,6 +301,8 @@ GEM
       rubocop (>= 0.72.0)
     rubocop-rspec (1.36.0)
       rubocop (>= 0.68.1)
+    rubocop_auto_corrector (0.3.0)
+      rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
     safe_yaml (1.0.5)
     sassc (2.2.1)
@@ -401,6 +403,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-performance
   rubocop-rails
+  rubocop_auto_corrector
   sassc-rails
   simplecov
   slim-rails
