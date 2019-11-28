@@ -12,17 +12,17 @@ AllCops:
   TargetRubyVersion: 2.6
   TargetRailsVersion: 5.2
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle:      table
   EnforcedHashRocketStyle: table
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Rails/NotNullColumn:

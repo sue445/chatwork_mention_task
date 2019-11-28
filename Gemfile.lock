@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/sue445/onkcop.git
-  revision: 12f80e6cde6074fa8aa3a36c676aa5d679231d8a
-  branch: rubocop_0.72.0
+  revision: 4576d831f4be9a0b049d18f043c9bb9b836031e8
+  branch: develop
   specs:
     onkcop (0.53.0.3)
       rubocop (>= 0.53.0)
@@ -287,7 +287,7 @@ GEM
       activesupport (>= 5.0.0)
       hashie (>= 2.0.5)
       sengiri_yaml (>= 0.0.2)
-    rubocop (0.76.0)
+    rubocop (0.77.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.6)
@@ -296,7 +296,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-performance (1.5.1)
       rubocop (>= 0.71.0)
-    rubocop-rails (2.3.2)
+    rubocop-rails (2.4.0)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     rubocop-rspec (1.37.0)
