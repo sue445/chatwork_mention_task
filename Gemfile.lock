@@ -150,7 +150,7 @@ GEM
     http_accept_language (2.1.1)
     i18n (1.7.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.29)
+    i18n-tasks (0.9.30)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
