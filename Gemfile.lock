@@ -134,7 +134,7 @@ GEM
       rubicure (>= 1.0.5)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (1.0.0.rc1)
+    faraday_middleware (1.0.0)
       faraday (~> 1.0)
     ffi (1.12.2)
     font-awesome-rails (4.7.0.5)
