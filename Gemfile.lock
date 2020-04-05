@@ -139,7 +139,7 @@ GEM
     ffi (1.12.2)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
-    foreman (0.87.0)
+    foreman (0.87.1)
     global (1.1.0)
       activesupport (>= 2.0)
     globalid (0.4.2)
