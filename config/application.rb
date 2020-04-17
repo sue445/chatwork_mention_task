@@ -34,8 +34,7 @@ module ChatworkMentionTask
     config.i18n.fallbacks = [:en]
 
     Global.configure do |config|
-      config.environment = Rails.env.to_s
-      config.config_directory = Rails.root.join("config/global").to_s
+      config.backend :filesystem
     end
 
     config.cache_store = :mem_cache_store, Global.memcached.servers, Global.memcached.options.to_hash.symbolize_keys
