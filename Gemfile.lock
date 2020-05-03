@@ -302,7 +302,7 @@ GEM
       activesupport
       rack (>= 1.1)
       rubocop (>= 0.72.0)
-    rubocop-rspec (1.38.1)
+    rubocop-rspec (1.39.0)
       rubocop (>= 0.68.1)
     rubocop_auto_corrector (0.3.0)
       rubocop (>= 0.72.0)
