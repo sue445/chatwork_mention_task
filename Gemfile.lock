@@ -82,7 +82,7 @@ GEM
     ast (2.4.1)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
-    autoprefixer-rails (9.7.6)
+    autoprefixer-rails (9.8.1)
       execjs
     bootsnap (1.4.6)
       msgpack (~> 1.0)
