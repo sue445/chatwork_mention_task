@@ -49,9 +49,9 @@ group :development do
   gem "onkcop", require: false, github: "sue445/onkcop", branch: "develop"
 
   gem "pry-byebug", group: :test
+  gem "rubocop_auto_corrector", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
-  gem "rubocop_auto_corrector", require: false
 end
 
 group :test do
