@@ -45,7 +45,7 @@ class User < ApplicationRecord
   # @param locale [Symbol]
   #
   # @return [User]
-  def self.register(auth_hash, locale)
+  def self.register(auth_hash, locale) # rubocop:disable Metrics/AbcSize
     user = User.find_or_initialize_by(account_id: auth_hash[:uid]) do |u|
       u.room_id   = auth_hash[:extra][:raw_info][:room_id]
       u.locale    = locale
