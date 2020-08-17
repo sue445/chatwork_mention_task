@@ -4,6 +4,7 @@ orbs:
   codeclimate: sue445/codeclimate@volatile
   ruby-orbs:   sue445/ruby-orbs@volatile
   heroku:      circleci/heroku@1.1.1
+  slack:       circleci/slack@volatile
 
 executors:
   default:
@@ -39,6 +40,8 @@ jobs:
           steps:
             - run: bundle exec rspec
 
+      - slack/status
+
   index_shotgun:
     executor:
       name: default
@@ -51,6 +54,8 @@ jobs:
 
       - run: ./bin/rails index_shotgun:fire
 
+      - slack/status
+
   rubocop:
     executor:
       name: default
@@ -61,6 +66,8 @@ jobs:
           cache_key_prefix: "v3-bundle"
 
       - run: bundle exec rubocop
+
+      - slack/status
 
 workflows:
   version: 2
@@ -79,3 +86,5 @@ workflows:
           filters:
             branches:
               only: master
+          post-deploy:
+            - slack/status
