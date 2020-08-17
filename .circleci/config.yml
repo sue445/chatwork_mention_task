@@ -34,12 +34,10 @@ jobs:
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
-
       - codeclimate/with-cc-test-reporter:
           after_build_args: '--coverage-input-type simplecov'
           steps:
             - run: bundle exec rspec
-
       - slack/status
 
   index_shotgun:
@@ -51,9 +49,7 @@ jobs:
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
-
       - run: ./bin/rails index_shotgun:fire
-
       - slack/status
 
   rubocop:
@@ -64,9 +60,7 @@ jobs:
       - checkout
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
-
       - run: bundle exec rubocop
-
       - slack/status
 
 workflows:
