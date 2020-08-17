@@ -4,6 +4,7 @@ orbs:
   codeclimate: sue445/codeclimate@volatile
   ruby-orbs:   sue445/ruby-orbs@volatile
   heroku:      circleci/heroku@1.1.1
+  slack:       circleci/slack@volatile
 
 executors:
   default:
@@ -33,11 +34,11 @@ jobs:
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
-
       - codeclimate/with-cc-test-reporter:
           after_build_args: '--coverage-input-type simplecov'
           steps:
             - run: bundle exec rspec
+      - slack/status
 
   index_shotgun:
     executor:
@@ -48,8 +49,8 @@ jobs:
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
-
       - run: ./bin/rails index_shotgun:fire
+      - slack/status
 
   rubocop:
     executor:
@@ -59,8 +60,8 @@ jobs:
       - checkout
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
-
       - run: bundle exec rubocop
+      - slack/status
 
 workflows:
   version: 2
@@ -79,3 +80,5 @@ workflows:
           filters:
             branches:
               only: master
+          post-deploy:
+            - slack/status
