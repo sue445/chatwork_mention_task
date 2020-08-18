@@ -26,6 +26,9 @@ Layout/FirstArrayElementIndentation:
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Rails/NotNullColumn:
   Enabled: false
 
