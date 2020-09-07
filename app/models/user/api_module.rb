@@ -6,7 +6,9 @@ module User::ApiModule
       api_client.get_rooms
     end
 
-    all_rooms.select {|room| ["my", "group"].include?(room.type) && ["admin", "member"].include?(room.role) }.sort_by(&:name)
+    room_types = ["my", "group"]
+    room_roles = ["admin", "member"]
+    all_rooms.select {|room| room_types.include?(room.type) && room_roles.include?(room.role) }.sort_by(&:name)
   end
 
   def room_name
