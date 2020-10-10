@@ -1,6 +1,8 @@
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
+plugin :heroku
+
 rails_env = ENV.fetch("RAILS_ENV") { "development" }
 
 if rails_env == "development" && File.exist?("#{__dir__}/server.key")
