@@ -221,6 +221,8 @@ GEM
     public_suffix (4.0.6)
     puma (5.0.2)
       nio4r (~> 2.0)
+    puma-heroku (1.1.0)
+      puma (>= 3.0, < 5.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -400,6 +402,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma
+  puma-heroku
   rails (~> 6.0.2)
   rails-i18n
   rollbar
