@@ -25,7 +25,7 @@ gem "newrelic_rpm"
 gem "omniauth-chatwork"
 gem "omniauth-oauth2", ">= 1.5.0"
 gem "pg"
-gem "puma"
+gem "puma", "< 5.0.0" # FIXME: app is crashed when puma v5+
 gem "puma-heroku"
 gem "rails-i18n"
 gem "rollbar"
