@@ -9,7 +9,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: ubuntu
