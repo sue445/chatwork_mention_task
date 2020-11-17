@@ -38,7 +38,7 @@ jobs:
           after_build_args: '--coverage-input-type simplecov'
           steps:
             - run: bundle exec rspec
-      - slack/status
+      - slack/notify-on-failure
 
   index_shotgun:
     executor:
@@ -50,7 +50,7 @@ jobs:
           cache_key_prefix: "v3-bundle"
       - run: ./.circleci/setup_database.sh
       - run: ./bin/rails index_shotgun:fire
-      - slack/status
+      - slack/notify-on-failure
 
   rubocop:
     executor:
@@ -61,7 +61,7 @@ jobs:
       - ruby-orbs/bundle-install:
           cache_key_prefix: "v3-bundle"
       - run: bundle exec rubocop
-      - slack/status
+      - slack/notify-on-failure
 
 workflows:
   version: 2
