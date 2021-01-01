@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   codeclimate: sue445/codeclimate@volatile
-  ruby-orbs:   sue445/ruby-orbs@volatile
+  ruby-orbs:   sue445/ruby-orbs@dev:741d6637f7ec064c0cd6affa6ffb254a67b7eec6
   heroku:      circleci/heroku@volatile
   slack:       circleci/slack@3
 
