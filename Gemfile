@@ -22,6 +22,7 @@ gem "jbuilder"
 gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
 gem "newrelic_rpm"
+gem "nokogiri", ">= 1.11.0.rc4"
 gem "omniauth-chatwork"
 gem "omniauth-oauth2", ">= 1.5.0"
 gem "pg"
