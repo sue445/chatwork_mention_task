@@ -11,7 +11,7 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 3.0
-  TargetRailsVersion: 6.0
+  TargetRailsVersion: 6.1
   NewCops: enable
 
 Layout/HashAlignment:
