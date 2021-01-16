@@ -25,6 +25,7 @@ gem "newrelic_rpm"
 gem "nokogiri", ">= 1.11.0.rc4"
 gem "omniauth-chatwork"
 gem "omniauth-oauth2", ">= 1.5.0"
+gem "omniauth-rails_csrf_protection"
 gem "pg"
 gem "puma", "< 5.0.0" # FIXME: app is crashed when puma v5+
 gem "puma-heroku"
