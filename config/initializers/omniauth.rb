@@ -7,3 +7,5 @@ end
 OmniAuth.config.on_failure = proc do |env|
   AuthController.action(:omniauth_failure).call(env)
 end
+
+OmniAuth.config.allowed_request_methods = %i[get post]
