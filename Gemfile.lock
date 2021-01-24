@@ -74,7 +74,7 @@ GEM
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
-    ast (2.4.1)
+    ast (2.4.2)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
     autoprefixer-rails (10.2.0.0)
