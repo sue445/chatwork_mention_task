@@ -293,7 +293,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubicure (2.0.0)
+    rubicure (2.0.1)
       activesupport (>= 5.0.0)
       hashie (>= 2.0.5)
       sengiri_yaml (>= 0.0.2)
