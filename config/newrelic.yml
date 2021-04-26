@@ -3,9 +3,9 @@
 # .NET, PHP, Python, Node, and Go applications with deep visibility and low
 # overhead.  For more information, visit www.newrelic.com.
 #
-# Generated January 18, 2018
+# Generated April 26, 2021
 #
-# This configuration file is custom generated for app85986537@heroku.com
+# This configuration file is custom generated for ChatworkMentionTask
 #
 # For full documentation of agent configuration options, please refer to
 # https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
@@ -31,16 +31,11 @@ common: &default_settings
 development:
   <<: *default_settings
   app_name: ChatworkMentionTask (Development)
-  monitor_mode: false
 
 test:
   <<: *default_settings
   # It doesn't make sense to report to New Relic from automated test runs.
   monitor_mode: false
-
-staging:
-  <<: *default_settings
-  app_name: ChatworkMentionTask (Staging)
 
 production:
   <<: *default_settings
