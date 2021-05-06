@@ -30,6 +30,9 @@ Layout/FirstHashElementIndentation:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+Rails/EnvironmentVariableAccess:
+  Enabled: false
+
 Rails/NotNullColumn:
   Enabled: false
 
