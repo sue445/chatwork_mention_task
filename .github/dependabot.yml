@@ -9,20 +9,3 @@ updates:
   assignees:
   - sue445
   versioning-strategy: lockfile-only
-  ignore:
-  - dependency-name: rubocop
-    versions:
-    - 1.13.0
-  - dependency-name: mini_mime
-    versions:
-    - 1.0.3
-  - dependency-name: mimemagic
-    versions:
-    - 0.3.10
-    - 0.3.6
-  - dependency-name: msgpack
-    versions:
-    - 1.4.2
-  - dependency-name: rspec-support
-    versions:
-    - 3.10.2
