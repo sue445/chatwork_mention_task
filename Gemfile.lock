@@ -395,8 +395,8 @@ DEPENDENCIES
   annotate (>= 2.7.3)
   auto_strip_attributes
   bootsnap
-  bootstrap
-  bootstrap_form (>= 4.0.0.alpha1)
+  bootstrap (>= 5.0.0)
+  bootstrap_form (>= 5.0.0)
   chatwork
   chatwork_webhook_verify
   connection_pool
