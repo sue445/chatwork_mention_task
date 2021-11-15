@@ -7,8 +7,8 @@ gem "rails", "~> 6.1.1"
 
 gem "auto_strip_attributes"
 gem "bootsnap", require: false
-gem "bootstrap"
-gem "bootstrap_form", ">= 4.0.0.alpha1"
+gem "bootstrap", ">= 5.0.0"
+gem "bootstrap_form", ">= 5.0.0"
 gem "chatwork"
 gem "chatwork_webhook_verify"
 gem "connection_pool"

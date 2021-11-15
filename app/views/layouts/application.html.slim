@@ -20,11 +20,11 @@ html lang="en"
         span.navbar-toggler-icon
 
       #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+        ul.navbar-nav.me-auto.mt-2.mt-lg-0
 
         - if signed_in?
           ul.my-2.my-lg-0
-            li.navbar-nav.mr-auto.nav-item.dropdown
+            li.navbar-nav.me-auto.nav-item.dropdown
               a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
                 = image_tag current_user.avatar_image_url, size: "32x32", class: "rounded mx-auto"
                 = current_user.name
