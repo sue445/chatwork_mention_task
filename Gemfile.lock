@@ -90,7 +90,7 @@ GEM
       activemodel (>= 5.2)
     builder (3.2.4)
     byebug (11.1.3)
-    chatwork (0.12.2)
+    chatwork (0.12.3)
       faraday (>= 0.9)
       faraday_middleware
       hashie
@@ -146,7 +146,7 @@ GEM
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    faraday_middleware (1.0.0)
+    faraday_middleware (1.2.0)
       faraday (~> 1.0)
     ffi (1.15.4)
     font-awesome-rails (4.7.0.7)
