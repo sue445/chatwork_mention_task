@@ -172,7 +172,7 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    index_shotgun (1.0.0)
+    index_shotgun (1.0.1)
       activerecord (>= 5.0.0)
       thor
     jbuilder (2.11.3)
