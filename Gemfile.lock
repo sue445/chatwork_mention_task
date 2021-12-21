@@ -175,7 +175,8 @@ GEM
     index_shotgun (1.0.1)
       activerecord (>= 5.0.0)
       thor
-    jbuilder (2.11.4)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
