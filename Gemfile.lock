@@ -152,7 +152,7 @@ GEM
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     foreman (0.87.2)
-    global (2.0.0)
+    global (2.1.0)
       activesupport (>= 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -387,7 +387,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   ruby
