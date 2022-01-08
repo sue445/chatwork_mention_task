@@ -152,7 +152,7 @@ GEM
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     foreman (0.87.2)
-    global (2.0.0)
+    global (2.1.0)
       activesupport (>= 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
