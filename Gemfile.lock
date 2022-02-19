@@ -420,6 +420,7 @@ DEPENDENCIES
   listen
   newrelic_rpm
   nokogiri (>= 1.11.0.rc4)
+  oauth2 (< 1.4.8)
   omniauth-chatwork
   omniauth-oauth2 (>= 1.5.0)
   omniauth-rails_csrf_protection
