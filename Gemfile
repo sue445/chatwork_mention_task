@@ -9,7 +9,7 @@ gem "auto_strip_attributes"
 gem "bootsnap", require: false
 gem "bootstrap", ">= 5.0.0"
 gem "bootstrap_form", ">= 5.0.0"
-gem "chatwork"
+gem "chatwork", ">= 1.0.0"
 gem "chatwork_webhook_verify"
 gem "connection_pool"
 gem "dalli"
@@ -23,10 +23,6 @@ gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
 gem "newrelic_rpm"
 gem "nokogiri", ">= 1.11.0.rc4"
-
-# c.f. https://github.com/sue445/chatwork_mention_task/pull/1212
-gem "oauth2", "< 1.4.8"
-
 gem "omniauth-chatwork"
 gem "omniauth-oauth2", ">= 1.5.0"
 gem "omniauth-rails_csrf_protection"
