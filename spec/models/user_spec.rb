@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
       its(:access_token)              { should eq "access_token" }
       its(:refresh_token)             { should eq "refresh_token" }
       its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
-      its(:refresh_token_reminded_at) { should be nil }
+      its(:refresh_token_reminded_at) { should be_nil }
       its(:locale)                    { should eq "ja" }
       its(:time_zone)                 { should eq "Tokyo" }
     end
@@ -107,7 +107,7 @@ RSpec.describe User, type: :model do
         its(:access_token)              { should eq "access_token" }
         its(:refresh_token)             { should eq "refresh_token" }
         its(:access_token_expires_at)   { should match_unixtime(Time.zone.at(1_510_504_991)) }
-        its(:refresh_token_reminded_at) { should be nil }
+        its(:refresh_token_reminded_at) { should be_nil }
         its(:locale)                    { should eq "en" }
         its(:time_zone)                 { should eq "UTC" }
       end
