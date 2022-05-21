@@ -38,3 +38,6 @@ Rails/NotNullColumn:
 
 RSpec/SharedExamples:
   Enabled: false
+
+Style/FetchEnvVar:
+  Enabled: false
