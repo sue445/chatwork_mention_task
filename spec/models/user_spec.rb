@@ -81,7 +81,7 @@ RSpec.describe User, type: :model do
       context "when refresh token is not updated" do
         let(:refresh_token) { "refresh_token" }
 
-        it { expect { subject }.to change { User.count }.by(0) }
+        it { expect { subject }.not_to change { User.count } }
 
         its(:account_id)                { should eq 1_111_111 }
         its(:room_id)                   { should eq 2_222_222 }
@@ -98,7 +98,7 @@ RSpec.describe User, type: :model do
       context "when refresh token is updated" do
         let(:refresh_token) { "old_refresh_token" }
 
-        it { expect { subject }.to change { User.count }.by(0) }
+        it { expect { subject }.not_to change { User.count } }
 
         its(:account_id)                { should eq 1_111_111 }
         its(:room_id)                   { should eq 2_222_222 }
