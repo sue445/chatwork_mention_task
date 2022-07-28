@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path unless signed_in?
     end
 
-    def with_user_time_zone(&block)
-      Time.use_zone(current_user.time_zone, &block)
+    def with_user_time_zone(&)
+      Time.use_zone(current_user.time_zone, &)
     end
 
     def set_locale

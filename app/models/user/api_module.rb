@@ -13,7 +13,7 @@ module User::ApiModule
 
   def room_name
     room = with_retryable do
-      api_client.find_room(room_id: room_id)
+      api_client.find_room(room_id:)
     end
 
     return I18n.t("app.my_chat") if room.type == "my"
@@ -23,12 +23,12 @@ module User::ApiModule
 
   def create_task(room_id:, body:, to_ids:, limit_at: nil)
     with_retryable do
-      api_client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit_at&.to_i)
+      api_client.create_task(room_id:, body:, to_ids:, limit: limit_at&.to_i)
     end
   end
 
   def create_my_task(body, limit_at: nil)
-    create_task(room_id: room_id, body: body, to_ids: account_id, limit_at: limit_at)
+    create_task(room_id:, body:, to_ids: account_id, limit_at:)
   end
 
   def with_retryable
@@ -58,7 +58,7 @@ module User::ApiModule
   private
 
     def api_client
-      ChatWork::Client.new(access_token: access_token)
+      ChatWork::Client.new(access_token:)
     end
 
     def oauth_client

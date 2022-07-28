@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.4"
+ruby "3.1.2"
 
 gem "rails", "~> 6.1.1"
 
@@ -21,6 +21,7 @@ gem "i18n-tasks"
 gem "jbuilder"
 gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
+gem "net-smtp"
 gem "newrelic_rpm"
 gem "nokogiri", ">= 1.11.0.rc4"
 gem "omniauth-chatwork"
@@ -57,6 +58,7 @@ group :test do
   gem "faker-precure"
   gem "rspec-its"
   gem "rspec-rails", group: :development
+  gem "rubicure", ">= 3.0.0"
   gem "simplecov", require: false
   gem "webmock"
 end

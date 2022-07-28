@@ -20,16 +20,16 @@ RSpec.describe MeController, :logged_in, type: :controller do
   end
 
   describe "PUT #update" do
-    subject { put :update, params: params }
+    subject { put :update, params: }
 
     let(:params) do
       {
         user: {
-          room_id:       room_id,
-          webhook_token: webhook_token,
-          account_type:  account_type,
-          locale:        locale,
-          time_zone:     time_zone,
+          room_id:,
+          webhook_token:,
+          account_type:,
+          locale:,
+          time_zone:,
         },
       }
     end
