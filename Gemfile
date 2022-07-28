@@ -57,6 +57,7 @@ group :test do
   gem "faker-precure"
   gem "rspec-its"
   gem "rspec-rails", group: :development
+  gem "rubicure", ">= 3.0.0"
   gem "simplecov", require: false
   gem "webmock"
 end
