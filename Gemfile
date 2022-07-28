@@ -21,6 +21,8 @@ gem "i18n-tasks"
 gem "jbuilder"
 gem "jquery-rails"
 gem "komachi_heartbeat", github: "mitaku/komachi_heartbeat", branch: "master", ref: "cd04393" # TODO: Use gemified version
+gem "net-imap"
+gem "net-pop"
 gem "net-smtp"
 gem "newrelic_rpm"
 gem "nokogiri", ">= 1.11.0.rc4"
