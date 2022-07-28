@@ -1,6 +1,6 @@
 RSpec.describe WebhookController, type: :controller do
   describe "POST #account" do
-    subject { post :account, params: params }
+    subject { post :account, params: }
 
     before do
       allow_any_instance_of(User).to receive(:api_client) { api_client } # rubocop:disable RSpec/AnyInstance
@@ -17,7 +17,7 @@ RSpec.describe WebhookController, type: :controller do
         account_id:                 user.account_id,
         chatwork_webhook_signature: "XXXXXXXXXXXXXXXXXXXXXX",
         webhook_setting_id:         "12345",
-        webhook_event_type:         webhook_event_type,
+        webhook_event_type:,
         webhook_event_time:         1_498_028_130,
         webhook_event:              {
           from_account_id: 1_234_567_890,
@@ -30,7 +30,7 @@ RSpec.describe WebhookController, type: :controller do
         },
         webhook:                    {
           webhook_setting_id: "12345",
-          webhook_event_type: webhook_event_type,
+          webhook_event_type:,
           webhook_event_time: 1_498_028_130,
           webhook_event:      {
             from_account_id: 1_234_567_890,
@@ -72,7 +72,7 @@ RSpec.describe WebhookController, type: :controller do
   end
 
   describe ".format_message" do
-    subject { WebhookController.format_message(webhook_event: webhook_event, account_type: account_type) }
+    subject { WebhookController.format_message(webhook_event:, account_type:) }
 
     let(:webhook_event) do
       {

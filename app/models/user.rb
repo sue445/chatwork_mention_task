@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def suppress_error_with_notification
-    Rollbar.scope!(person: { id: id, username: account_id })
+    Rollbar.scope!(person: { id:, username: account_id })
 
     yield
   rescue => e

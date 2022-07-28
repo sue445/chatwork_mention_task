@@ -69,9 +69,9 @@ RSpec.describe User, type: :model do
         create(
           :user,
           account_id:                1_111_111,
-          room_id:                   room_id,
-          refresh_token:             refresh_token,
-          refresh_token_reminded_at: refresh_token_reminded_at,
+          room_id:,
+          refresh_token:,
+          refresh_token_reminded_at:,
         )
       end
 
