@@ -39,6 +39,10 @@ html lang="en"
                   = fa_icon "sign-out", text: t("app.sign_out")
 
     .container-fluid
+      .alert.alert-danger role="alert"
+        = link_to "https://github.com/sue445/chatwork_mention_task#no-longer-maintained"
+          = t("app.no_longer_maintained")
+
       = render partial: "shared/alert"
       = yield
 

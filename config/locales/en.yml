@@ -35,6 +35,7 @@ en:
     sign_in:  "Sign in with ChatWork"
     sign_out: "Sign out"
     my_chat:  "My Chat"
+    no_longer_maintained: "NO LONGER MAINTAINED"
 
   views:
     form:

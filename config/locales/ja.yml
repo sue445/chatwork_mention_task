@@ -4,6 +4,7 @@ ja:
     sign_in:  "ChatWorkアカウントでサインイン"
     sign_out: "サインアウト"
     my_chat:  "マイチャット"
+    no_longer_maintained: "このアプリケーションはメンテナンスを終了しました"
 
   views:
     form:
